@@ -14,7 +14,9 @@ import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
 import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
+import EditableTable from '../app-table-with-textfield';
 import AppConversionRates from '../app-conversion-rates';
+
 
 // ----------------------------------------------------------------------
 
@@ -60,6 +62,10 @@ export default function AppView() {
             color="error"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
+        </Grid>
+
+        <Grid xs={12} md={12} lg={12}>
+          <EditableTable/>
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
