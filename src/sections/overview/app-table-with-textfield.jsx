@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
-function EditableTable() {
-  // 상태 관리를 위한 예시 코드
-  // 실제로는 100여 개의 항목을 관리하기 위해 이러한 형태로 상태를 관리할 수 있습니다.
+// props 대신 { title }을 사용하여 구조 분해 할당을 적용합니다.
+function EditableTable({ title }) {
   const [values, setValues] = useState({
     item1: "값 1",
     item2: "값 2",
@@ -26,7 +27,6 @@ function EditableTable() {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  // 항목 리스트 예시 (100개를 넣어야 한다면, 이 배열에 추가)
   const items = Object.keys(values).map((key) => ({
     name: key,
     value: values[key],
@@ -34,6 +34,10 @@ function EditableTable() {
 
   return (
     <Card sx={{ p: 3, borderRadius: 2 }}>
+      <Typography variant="h6" sx={{ mb: 5 }}>
+        {title} {/* 직접 title을 사용 */}
+      </Typography>
+
       <Grid container spacing={2}>
         {items.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
@@ -52,5 +56,9 @@ function EditableTable() {
     </Card>
   );
 }
+
+EditableTable.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default EditableTable;

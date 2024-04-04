@@ -24,7 +24,7 @@ export default function AppView() {
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
-        Hi, Welcome back 👋
+      Acute Kidney Failure Prediction 👋
       </Typography>
 
       <Grid container spacing={3}>
@@ -65,7 +65,11 @@ export default function AppView() {
         </Grid>
 
         <Grid xs={12} md={12} lg={12}>
-          <EditableTable/>
+          <EditableTable title='관리/검사 수치'/>
+        </Grid>
+
+        <Grid xs={12} md={12} lg={12}>
+          <EditableTable title='진단 여부'/>
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
