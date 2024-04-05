@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import Modal from '@mui/material/Modal';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -24,6 +29,29 @@ function FloatingActionModal() {
     boxShadow: 24,
     p: 4,
   };
+
+
+
+
+
+  const patientInfo = [
+    { id: 'P001', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P002', age: 25, gender: 'Female', weight: 55 },
+    { id: 'P003', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P004', age: 25, gender: 'Female', weight: 55 },
+    { id: 'P005', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P006', age: 25, gender: 'Female', weight: 55 },
+    { id: 'P007', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P008', age: 25, gender: 'Female', weight: 55 },
+    { id: 'P009', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P0010', age: 25, gender: 'Female', weight: 55 },
+    { id: 'P0011', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P0012', age: 25, gender: 'Female', weight: 55 },
+    { id: 'P0013', age: 30, gender: 'Male', weight: 70 },
+    { id: 'P0014', age: 25, gender: 'Female', weight: 55 },
+
+    // 추가 환자 정보...
+  ];
 
   return (
     <div>
@@ -67,8 +95,29 @@ function FloatingActionModal() {
             환자 리스트
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            환자 리스트 보여주고 선택할 수 있도록 변경 예정
+            조회할 환자를 선택해주세요.
           </Typography>
+          <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>환자번호</TableCell>
+              <TableCell>나이</TableCell>
+              <TableCell>성별</TableCell>
+              <TableCell>몸무게</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {patientInfo.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">{row.id}</TableCell>
+                <TableCell>{row.age}</TableCell>
+                <TableCell>{row.gender}</TableCell>
+                <TableCell>{row.weight}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+          
         </Box>
       </Modal>
     </div>
