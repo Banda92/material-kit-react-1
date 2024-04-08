@@ -9,8 +9,11 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import Typography from '@mui/material/Typography';
-import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
+// import SearchIcon from '@mui/icons-material/Search';
 import TablePagination from '@mui/material/TablePagination';
+
+import Iconify from 'src/components/iconify';
 
 function FloatingActionModal() {
   const [open, setOpen] = useState(false);
@@ -154,13 +157,35 @@ function FloatingActionModal() {
         alignItems: 'center',
         height: '80px', // 버튼의 크기 조정
         width: '80px', // 버튼의 너비 조정
+        '@media (max-width:600px)': {
+          height: '60px',
+          width: '60px'
+        },
         fontSize: '2.3rem', // 아이콘 크기 조정
         '&:hover, &:active': {
           opacity: 1, // 마우스 오버 또는 클릭 시 투명도 100%
         },
       }}>
-        <SearchIcon />
-        <Typography variant="caption" sx={{ marginTop: '4px' }}>환자 선택</Typography>
+        {/* <SearchIcon /> */}
+        <IconButton sx={{
+          padding: '2px'
+        }}>
+          <Iconify icon="eva:search-fill" color="white" width="30px" sx={{
+            '@media (max-width:600px)': {
+              width: '25px'
+            },
+          }} />
+        </IconButton>
+        <Typography variant="caption"
+          sx={{
+            // marginTop: '4px', 
+            padding: '2px',
+            '@media (max-width:600px)': {
+              padding:0,
+              fontSize:'.5rem'
+            }
+          }}
+        >환자 선택</Typography>
       </Fab>
 
       <Modal open={open} onClose={handleClose}>
