@@ -4,18 +4,20 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import Iconify from 'src/components/iconify';
+// import Iconify from 'src/components/iconify';
 
-import AppTasks from '../app-tasks';
+// import AppTasks from '../app-tasks';
 import AppNewsUpdate from '../app-news-update';
-import AppOrderTimeline from '../app-order-timeline';
+import DropdownSelect from '../app-select-dropdown';
+// import AppOrderTimeline from '../app-order-timeline';
 import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
-import AppTrafficBySite from '../app-traffic-by-site';
+// import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
 import EditableTable from '../app-table-with-textfield';
 import AppConversionRates from '../app-conversion-rates';
+
 
 
 // ----------------------------------------------------------------------
@@ -70,6 +72,10 @@ export default function AppView() {
 
         <Grid xs={12} md={12} lg={12}>
           <EditableTable title='진단 여부'/>
+        </Grid>
+
+        <Grid xs={12} md={12} lg={12}>
+          <DropdownSelect title='상태 예측'/>
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
@@ -163,7 +169,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        <Grid xs={12} md={12} lg={12}>
           <AppNewsUpdate
             title="News Update"
             list={[...Array(5)].map((_, index) => ({
@@ -176,7 +182,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AppOrderTimeline
             title="Order Timeline"
             list={[...Array(5)].map((_, index) => ({
@@ -192,9 +198,9 @@ export default function AppView() {
               time: faker.date.past(),
             }))}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AppTrafficBySite
             title="Traffic by Site"
             list={[
@@ -220,9 +226,9 @@ export default function AppView() {
               },
             ]}
           />
-        </Grid>
+        </Grid> */}
 
-        <Grid xs={12} md={6} lg={8}>
+        {/* <Grid xs={12} md={6} lg={8}>
           <AppTasks
             title="Tasks"
             list={[
@@ -233,7 +239,8 @@ export default function AppView() {
               { id: '5', name: 'Sprint Showcase' },
             ]}
           />
-        </Grid>
+        </Grid> */}
+
       </Grid>
     </Container>
   );
