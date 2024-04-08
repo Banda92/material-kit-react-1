@@ -201,18 +201,12 @@ function FloatingActionModal() {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
             sx={{
-              '& .MuiToolbar-root': {
-                flexWrap: 'wrap', // 내부 요소들을 감싸도록 설정
-                justifyContent:'space-between',
-                '& .MuiTablePagination-selectRoot': {
-                  flexBasis: '100%', // 모바일 뷰에서는 각 요소가 전체 너비를 차지하도록 설정
+              '@media (max-width:600px)': {
+                '& .MuiToolbar-root': {
+                  flexWrap: 'wrap', // 내부 요소들을 감싸도록 설정
+                  justifyContent: 'space-between',
                 }
               },
-              '@media (min-width:600px)': {
-                '& .MuiToolbar-root': {
-                  flexWrap: 'nowrap', // 넓은 화면에서는 원래대로 한 줄에 표시
-                }
-              }
             }}
           />
         </Box>
