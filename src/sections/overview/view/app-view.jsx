@@ -17,11 +17,12 @@ import DropdownSelect from '../app-select-dropdown';
 import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
-import PatientInfoGrid from '../app-PatientInfo-Grid';
+import PatientInfoGrid from '../app-patientInfo-grid';
 // import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
 import EditableTable from '../app-table-with-textfield';
 import AppConversionRates from '../app-conversion-rates';
+import PatientInfoGridNotSelected from '../app-patientInfo-grid-notselected';
 
 
 
@@ -44,7 +45,7 @@ export default function AppView() {
 
 
       <Grid container spacing={3}>
-        {isPatSelected &&
+        {isPatSelected ?
           <Grid item xs={12} sm={12} md={12}
             sx={{
               '@media (min-width:1200px)': {
@@ -54,6 +55,17 @@ export default function AppView() {
           >
 
             <PatientInfoGrid />
+          </Grid>
+          :
+          <Grid item xs={12} sm={12} md={12}
+            sx={{
+              '@media (min-width:1200px)': {
+                display: 'none'
+              },
+            }}
+          >
+
+            <PatientInfoGridNotSelected />
           </Grid>
         }
 
