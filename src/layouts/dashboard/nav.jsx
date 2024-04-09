@@ -37,15 +37,15 @@ export default function Nav({ openNav, onCloseNav }) {
 
   // const [patNo, setPatNo] = useState('')
 
-  const { 
+  const {
     isPatSelected, setIsPatSelected,
     patientNumber, setPatientNumber,
     selectedPatNo, setSelectedPatNo,
   } = useStatus()
 
-  const handlePatNoInput = (e) => { setPatientNumber(e.target.value) }
+  const handlePatnoInput = (e) => { setPatientNumber(e.target.value) }
 
-  const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') {setSelectedPatNo(e.target.value)}}
+  const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') { setSelectedPatNo(e.target.value) } }
 
   useEffect(() => {
     // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
@@ -54,8 +54,8 @@ export default function Nav({ openNav, onCloseNav }) {
     } else {
       setIsPatSelected(false);
     }
-  }, [selectedPatNo,setIsPatSelected]);
-  
+  }, [selectedPatNo, setIsPatSelected]);
+
 
   // useEffect(()=>{console.log(patNo)},[patNo])
 
@@ -98,7 +98,7 @@ export default function Nav({ openNav, onCloseNav }) {
   );
 
 
-  const renderSearchPatientNumber = (    
+  const renderSearchPatientNumber = (
     <Box
       sx={{
         // my: 3,
@@ -115,16 +115,16 @@ export default function Nav({ openNav, onCloseNav }) {
         fullWidth // 필드가 그리드 셀의 전체 너비를 차지하도록 설정합니다.
         label='환자번호 조회' // 레이블은 항목의 이름으로 설정됩니다.
         value={patientNumber} // 값은 상태에서 관리되는 항목의 값입니다.
-        onChange={(e) => handlePatNoInput(e)} // 값이 변경될 때 handleChange를 호출합니다.
+        onChange={(e) => handlePatnoInput(e)} // 값이 변경될 때 handleChange를 호출합니다.
         onKeyDown={(e) => handleKeyDownSelectPatNo(e)}
-      // name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
+        // name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
+        type='number'
       />
     </Box>
 
   )
 
   const renderSelectedPatientInfo = (
-    
     <Box
       sx={{
         my: 3,
@@ -138,11 +138,7 @@ export default function Nav({ openNav, onCloseNav }) {
       }}
     >
 
-
-
-
       <Box sx={{ ml: 2 }}>
-        {/* <Typography variant="subtitle1">Selected Patient Info</Typography> */}
         <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
         <hr />
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>환자번호: {selectedPatNo}</Typography>
@@ -152,6 +148,32 @@ export default function Nav({ openNav, onCloseNav }) {
       </Box>
     </Box>
   )
+
+  const renderNotSelectedPatientInfo = (
+    <Box
+      sx={{
+        my: 3,
+        mx: 2.5,
+        py: 2,
+        px: 2.5,
+        display: 'flex',
+        borderRadius: 1.5,
+        alignItems: 'center',
+        bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
+      }}
+    >
+
+      <Box sx={{ ml: 2 }}>
+        <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
+        <hr />
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}> 선택된 환자 정보가 존재하지 않습니다. 대상 환자를 선택해주세요.
+        </Typography>
+
+      </Box>
+    </Box>
+  )
+
+
 
   const renderMenu = (
     <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
@@ -212,7 +234,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       {renderAccount}
       {renderSearchPatientNumber}
-      {isPatSelected && renderSelectedPatientInfo}
+      {isPatSelected ? renderSelectedPatientInfo : renderNotSelectedPatientInfo}
       {renderMenu}
 
       <Box sx={{ flexGrow: 1 }} />

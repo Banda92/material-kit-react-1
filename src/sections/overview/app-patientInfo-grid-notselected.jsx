@@ -14,7 +14,7 @@ function PatientInfoGridNotSelected() {
         환자 정보
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 1, whiteSpace: 'normal', }}>
-        선택된 환자 정보가 존재하지 않습니다. 대상 환자를 선택해주세요.
+        선택된 환자 정보가 존재하지 않습니다.대상 환자를 선택해주세요.
       </Typography>
     </Paper>
   );
