@@ -5,9 +5,16 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import { useStatus } from 'src/utils/Context API/StatusContext';
+
+
 function PatientInfoGrid() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const {
+    selectedPatNo
+  } = useStatus()
+
 
   return (
     <Paper elevation={3} sx={{ p: 2, margin: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
@@ -20,7 +27,7 @@ function PatientInfoGrid() {
         flexWrap: 'wrap'
       }}>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 1, whiteSpace: 'normal', flex: matches ? '1 1 auto' : '1 0 100%' }}>
-          환자번호: 0001
+          환자번호: {selectedPatNo}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 1, whiteSpace: 'normal', flex: matches ? '1 1 auto' : '1 0 100%' }}>
           나이: 35

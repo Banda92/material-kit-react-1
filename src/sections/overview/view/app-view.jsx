@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 // import AppTasks from '../app-tasks';
 // import { useAuth } from 'src/utils/Context API/AuthContext';
 
+import { useStatus } from 'src/utils/Context API/StatusContext';
+
 import AppNewsUpdate from '../app-news-update';
 import DropdownSelect from '../app-select-dropdown';
 // import AppOrderTimeline from '../app-order-timeline';
@@ -30,23 +32,30 @@ export default function AppView() {
 
   // const { isLoggedIn } = useAuth();
 
+  const {
+    isPatSelected,
+  } = useStatus()
+
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
         Acute Kidney Failure Prediction 👋
       </Typography>
+
+
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} 
-          sx={{
-            '@media (min-width:1200px)': {
-              display: 'none'
-            },
-          }}
-        >
+        {isPatSelected &&
+          <Grid item xs={12} sm={12} md={12}
+            sx={{
+              '@media (min-width:1200px)': {
+                display: 'none'
+              },
+            }}
+          >
 
-          <PatientInfoGrid />
-        </Grid>
-
+            <PatientInfoGrid />
+          </Grid>
+        }
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
