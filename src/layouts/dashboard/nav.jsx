@@ -45,7 +45,10 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const handlePatnoInput = (e) => { setPatientNumber(e.target.value) }
 
-  const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') { setSelectedPatNo(e.target.value) } }
+  const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') { 
+    setSelectedPatNo(e.target.value)
+    setPatientNumber('') } 
+  }
 
   useEffect(() => {
     // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
