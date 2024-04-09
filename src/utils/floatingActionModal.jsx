@@ -15,10 +15,16 @@ import TablePagination from '@mui/material/TablePagination';
 
 import Iconify from 'src/components/iconify';
 
+import { useStatus } from './Context API/StatusContext';
+
 function FloatingActionModal() {
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const { 
+    setSelectedPatNo,
+  } = useStatus()
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,7 +36,8 @@ function FloatingActionModal() {
     setPage(0); // 페이지 크기가 변경될 때 첫 페이지로 돌아갑니다.
   };
   const handleRowClick = (patientId) => {
-    console.log('Selected patient ID:', patientId);
+    setSelectedPatNo(patientId);
+    handleClose()
   };
 
   const style = {

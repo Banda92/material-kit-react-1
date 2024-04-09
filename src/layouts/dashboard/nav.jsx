@@ -102,9 +102,9 @@ export default function Nav({ openNav, onCloseNav }) {
     <Box
       sx={{
         // my: 3,
-        mx: 2.5,
-        // py: 2,
-        // px: 2.5,
+        // mx: 2.5,
+        py: 2,
+        px: 2.5,
         display: 'flex',
         borderRadius: 1.5,
         alignItems: 'center',
