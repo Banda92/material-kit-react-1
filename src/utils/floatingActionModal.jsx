@@ -9,7 +9,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 // import SearchIcon from '@mui/icons-material/Search';
 import TablePagination from '@mui/material/TablePagination';
 
@@ -148,45 +148,31 @@ function FloatingActionModal() {
   return (
     <div>
       <Fab color="primary" aria-label="search" onClick={handleOpen} sx={{
-        opacity: 0.6, // 기본 투명도 설정
-        position: 'fixed',
-        bottom: '4vh',
-        right: '5vh',
-        display: 'flex',
-        flexDirection: 'column', // 요소들을 세로로 정렬
-        alignItems: 'center',
-        height: '80px', // 버튼의 크기 조정
-        width: '80px', // 버튼의 너비 조정
-        '@media (max-width:600px)': {
-          height: '60px',
-          width: '60px'
-        },
-        fontSize: '2.3rem', // 아이콘 크기 조정
-        '&:hover, &:active': {
-          opacity: 1, // 마우스 오버 또는 클릭 시 투명도 100%
-        },
-      }}>
-        {/* <SearchIcon /> */}
-        <IconButton sx={{
-          padding: '2px'
+          opacity: 0.6,
+          position: 'fixed',
+          bottom: '4vh',
+          right: '5vh',
+          height: '80px',
+          width: '80px',
+          fontSize: '2.3rem',
+          '&:hover, &:active': {
+            opacity: 1,
+          },
+          '@media (max-width:600px)': {
+            height: '60px',
+            width: '60px'
+          },
         }}>
-          <Iconify icon="eva:search-fill" color="white" width="30px" sx={{
-            '@media (max-width:600px)': {
-              width: '25px'
-            },
-          }} />
-        </IconButton>
-        <Typography variant="caption"
-          sx={{
-            // marginTop: '4px', 
-            padding: '2px',
-            '@media (max-width:600px)': {
-              padding:0,
-              fontSize:'.5rem'
-            }
-          }}
-        >환자 선택</Typography>
-      </Fab>
+          <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+          <Iconify icon="eva:search-fill" color="white" width={30} />
+          <Typography variant="caption" sx={{ mt: 1,'@media (max-width:600px)': {
+            mt:0, fontSize:'0.6rem'
+          }, }}>
+          환자 선택
+        </Typography>
+        </div>
+        </Fab>
+        
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

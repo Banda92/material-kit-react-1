@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 // import Iconify from 'src/components/iconify';
 
 // import AppTasks from '../app-tasks';
+import { useAuth } from 'src/utils/Context API/AuthContext';
+
 import AppNewsUpdate from '../app-news-update';
 import DropdownSelect from '../app-select-dropdown';
 // import AppOrderTimeline from '../app-order-timeline';
@@ -23,12 +25,15 @@ import AppConversionRates from '../app-conversion-rates';
 // ----------------------------------------------------------------------
 
 export default function AppView() {
+
+  const { isLoggedIn } = useAuth();
+
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
       Acute Kidney Failure Prediction 👋
       </Typography>
-
+{console.log(isLoggedIn)}
       <Grid container spacing={3}>
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
