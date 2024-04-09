@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
+import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 // import Iconify from 'src/components/iconify';
@@ -69,7 +69,7 @@ export default function AppView() {
           </Grid>
         }
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Weekly Sales"
             total={714000}
@@ -78,7 +78,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="New Users"
             total={1352831}
@@ -87,7 +87,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Item Orders"
             total={1723315}
@@ -96,7 +96,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Bug Reports"
             total={234}
@@ -105,19 +105,19 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={12} lg={12}>
+        <Grid item xs={12} md={12} lg={12}>
           <EditableTable title='관리/검사 수치' />
         </Grid>
 
-        <Grid xs={12} md={12} lg={12}>
+        <Grid item xs={12} md={12} lg={12}>
           <EditableTable title='진단 여부' />
         </Grid>
 
-        <Grid xs={12} md={12} lg={12}>
+        <Grid item xs={12} md={12} lg={12}>
           <DropdownSelect title='상태 예측' />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        <Grid item xs={12} md={6} lg={8}>
           <AppWebsiteVisits
             title="Website Visits"
             subheader="(+43%) than last year"
@@ -159,7 +159,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <AppCurrentVisits
             title="Current Visits"
             chart={{
@@ -173,7 +173,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
+        <Grid item xs={12} md={6} lg={8}>
           <AppConversionRates
             title="Conversion Rates"
             subheader="(+43%) than last year"
@@ -194,7 +194,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <AppCurrentSubject
             title="Current Subject"
             chart={{
@@ -208,7 +208,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={12} lg={12}>
+        <Grid item xs={12} md={12} lg={12}>
           <AppNewsUpdate
             title="News Update"
             list={[...Array(5)].map((_, index) => ({
