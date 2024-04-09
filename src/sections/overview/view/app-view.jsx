@@ -15,10 +15,12 @@ import DropdownSelect from '../app-select-dropdown';
 import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
+import PatientInfoGrid from '../app-PatientInfo-Grid';
 // import AppTrafficBySite from '../app-traffic-by-site';
 import AppCurrentSubject from '../app-current-subject';
 import EditableTable from '../app-table-with-textfield';
 import AppConversionRates from '../app-conversion-rates';
+
 
 
 
@@ -31,9 +33,21 @@ export default function AppView() {
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
-      Acute Kidney Failure Prediction 👋
+        Acute Kidney Failure Prediction 👋
       </Typography>
       <Grid container spacing={3}>
+        <Grid item xs={12} sm={12} md={12} 
+          sx={{
+            '@media (min-width:1200px)': {
+              display: 'none'
+            },
+          }}
+        >
+
+          <PatientInfoGrid />
+        </Grid>
+
+
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Weekly Sales"
@@ -71,15 +85,15 @@ export default function AppView() {
         </Grid>
 
         <Grid xs={12} md={12} lg={12}>
-          <EditableTable title='관리/검사 수치'/>
+          <EditableTable title='관리/검사 수치' />
         </Grid>
 
         <Grid xs={12} md={12} lg={12}>
-          <EditableTable title='진단 여부'/>
+          <EditableTable title='진단 여부' />
         </Grid>
 
         <Grid xs={12} md={12} lg={12}>
-          <DropdownSelect title='상태 예측'/>
+          <DropdownSelect title='상태 예측' />
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
