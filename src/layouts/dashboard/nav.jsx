@@ -1,5 +1,5 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -15,6 +15,8 @@ import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
+import { useStatus } from 'src/utils/Context API/StatusContext';
+
 import { account } from 'src/_mock/account';
 import { patient } from 'src/_mock/patient';
 
@@ -25,6 +27,7 @@ import { NAV } from './config-layout';
 import navConfig from './config-navigation';
 
 
+
 // ----------------------------------------------------------------------
 
 export default function Nav({ openNav, onCloseNav }) {
@@ -32,11 +35,35 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const upLg = useResponsive('up', 'lg');
 
-  const [patNo, setPatNo] = useState('')
+  // const [patNo, setPatNo] = useState('')
 
-  const handlePatNo = (e) => { setPatNo(e.target.value) }
+  const { 
+    isPatSelected, setIsPatSelected,
+    patientNumber, setPatientNumber,
+    selectedPatNo, setSelectedPatNo,
+  } = useStatus()
+
+  const handlePatNoInput = (e) => { setPatientNumber(e.target.value) }
+
+  const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') {setSelectedPatNo(e.target.value)}}
+
+  useEffect(() => {
+    // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
+    if (selectedPatNo && selectedPatNo !== '') {
+      setIsPatSelected(true);
+    } else {
+      setIsPatSelected(false);
+    }
+  }, [selectedPatNo,setIsPatSelected]);
+  
 
   // useEffect(()=>{console.log(patNo)},[patNo])
+
+
+
+
+
+
 
   useEffect(() => {
     if (openNav) {
@@ -71,7 +98,7 @@ export default function Nav({ openNav, onCloseNav }) {
   );
 
 
-  const renderSearchPatientNumber = (
+  const renderSearchPatientNumber = (    
     <Box
       sx={{
         // my: 3,
@@ -87,8 +114,9 @@ export default function Nav({ openNav, onCloseNav }) {
       <TextField
         fullWidth // 필드가 그리드 셀의 전체 너비를 차지하도록 설정합니다.
         label='환자번호 조회' // 레이블은 항목의 이름으로 설정됩니다.
-        value={patNo} // 값은 상태에서 관리되는 항목의 값입니다.
-        onChange={(e) => handlePatNo(e)} // 값이 변경될 때 handleChange를 호출합니다.
+        value={patientNumber} // 값은 상태에서 관리되는 항목의 값입니다.
+        onChange={(e) => handlePatNoInput(e)} // 값이 변경될 때 handleChange를 호출합니다.
+        onKeyDown={(e) => handleKeyDownSelectPatNo(e)}
       // name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
       />
     </Box>
@@ -96,6 +124,7 @@ export default function Nav({ openNav, onCloseNav }) {
   )
 
   const renderSelectedPatientInfo = (
+    
     <Box
       sx={{
         my: 3,
@@ -116,7 +145,7 @@ export default function Nav({ openNav, onCloseNav }) {
         {/* <Typography variant="subtitle1">Selected Patient Info</Typography> */}
         <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
         <hr />
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>환자번호: {patient.pid}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>환자번호: {selectedPatNo}</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>성별: {patient.sex}</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>나이: {patient.age}</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>몸무게: {patient.weight}</Typography>
@@ -183,7 +212,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       {renderAccount}
       {renderSearchPatientNumber}
-      {renderSelectedPatientInfo}
+      {isPatSelected && renderSelectedPatientInfo}
       {renderMenu}
 
       <Box sx={{ flexGrow: 1 }} />
