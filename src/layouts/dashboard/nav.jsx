@@ -37,7 +37,7 @@ export default function Nav({ openNav, onCloseNav }) {
   // const [patNo, setPatNo] = useState('')
 
   const {
-    isPatSelected, setIsPatSelected,
+    // isPatSelected, setIsPatSelected,
     patientNumber, setPatientNumber,
     selectedPatNo, setSelectedPatNo,
   } = useStatus()
@@ -58,21 +58,19 @@ export default function Nav({ openNav, onCloseNav }) {
     setSelectedPatData(getPatientInfoData().find(person => person.pat_id === parseInt(selectedPatNo, 10)))
   },[selectedPatNo])
   
-    // console.log(getPatientInfoData().find(person => person.pat_id === parseInt(selectedPatNo, 10)))
-    // console.log(selectedPatNo)
   
 
-  useEffect(() => {
-    // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
-    if (selectedPatNo && selectedPatNo !== '') {
-      setIsPatSelected(true);
-    } else {
-      setIsPatSelected(false);
-    }
-  }, [selectedPatNo, setIsPatSelected]);
+  // useEffect(() => {
+  //   // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
+  //   if (selectedPatNo && selectedPatNo !== '') {
+  //     setIsPatSelected(true);
+  //   } else {
+  //     setIsPatSelected(false);
+  //   }
+  // }, [selectedPatNo, setIsPatSelected]);
 
 
-  // useEffect(()=>{console.log(patNo)},[patNo])
+  
 
 
 
@@ -152,14 +150,14 @@ export default function Nav({ openNav, onCloseNav }) {
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
       }}
     >
-      {console.log(getPatientInfoData())}
+      
       <Box sx={{ ml: 2 }}>
         <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
         <hr />
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>환자번호: {selectedPatNo}</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>성별: {selectedPatData.sex}</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>나이: {selectedPatData.real_age}</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>몸무게: {selectedPatData.patientweight}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>성별: {selectedPatData && selectedPatData.sex}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>나이: {selectedPatData && selectedPatData.real_age}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>몸무게: {selectedPatData && selectedPatData.patientweight}</Typography>
       </Box>
     </Box>
   )
@@ -249,7 +247,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       {renderAccount}
       {renderSearchPatientNumber}
-      {isPatSelected ? renderSelectedPatientInfo : renderNotSelectedPatientInfo}
+      {selectedPatData ? renderSelectedPatientInfo : renderNotSelectedPatientInfo}
       {renderMenu}
       <Box sx={{ flexGrow: 1 }} />
 
