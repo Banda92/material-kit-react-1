@@ -25,8 +25,8 @@ import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
-import { useSelectedPatNo } from '../../hooks/useStatusHooks';
 import { getPatientInfoData } from '../../../public/assets/Datas/AKFP_Datas';
+import { useSelectedPatNo, useOpenPatListModal } from '../../hooks/useStatusHooks';
 
 // ----------------------------------------------------------------------
 
@@ -36,6 +36,8 @@ export default function Nav({ openNav, onCloseNav }) {
   const upLg = useResponsive('up', 'lg');
 
   const { selectedPatNo, setSelectedPatNo } = useSelectedPatNo();
+  const { setOpenPatListModal } = useOpenPatListModal();
+
 
   const [patientNumber, setPatientNumber] = useState('')
 
@@ -50,6 +52,7 @@ export default function Nav({ openNav, onCloseNav }) {
     }
   }
 
+  const handleOpen = () => setOpenPatListModal(true);
 
 
 
@@ -157,16 +160,16 @@ export default function Nav({ openNav, onCloseNav }) {
         size="large"
         type="submit"
         variant="contained"
-        color="inherit"
-        // onClick={runPredict}
+        // color="inherit"
+        onClick={handleOpen}
         display="flex"
         sx={{
           // paddingLeft:'5%',
-          paddingRight:'25px',
+          paddingRight:'30px',
         }}
         
       >
-        <Iconify icon="eva:search-fill" color="white" width={25}/>
+        <Iconify icon="eva:search-fill" color="white" width={18}/>
         환자 선택
       </LoadingButton>
     </Box>

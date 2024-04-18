@@ -15,6 +15,7 @@ import TablePagination from '@mui/material/TablePagination';
 
 import Iconify from 'src/components/iconify';
 
+import { getPatientInfoData } from '../../public/assets/Datas/AKFP_Datas';
 import { useSelectedPatNo, useOpenPatListModal, } from '../hooks/useStatusHooks';
 
 const FloatingActionModal = () => {
@@ -58,103 +59,10 @@ const FloatingActionModal = () => {
     p: 4,
   };
 
-  const patientInfo = [
-    { id: '001', age: 30, gender: 'Male', weight: 70 },
-    { id: '002', age: 25, gender: 'Female', weight: 55 },
-    { id: '003', age: 30, gender: 'Male', weight: 70 },
-    { id: '004', age: 25, gender: 'Female', weight: 55 },
-    { id: '005', age: 30, gender: 'Male', weight: 70 },
-    { id: '006', age: 25, gender: 'Female', weight: 55 },
-    { id: '007', age: 30, gender: 'Male', weight: 70 },
-    { id: '008', age: 25, gender: 'Female', weight: 55 },
-    { id: '009', age: 30, gender: 'Male', weight: 70 },
-    { id: '010', age: 25, gender: 'Female', weight: 55 },
-    { id: '011', age: 30, gender: 'Male', weight: 70 },
-    { id: '012', age: 25, gender: 'Female', weight: 55 },
-    { id: '013', age: 30, gender: 'Male', weight: 70 },
-    { id: '014', age: 25, gender: 'Female', weight: 55 },
-    { id: '015', age: 30, gender: 'Male', weight: 70 },
-    { id: '016', age: 25, gender: 'Female', weight: 55 },
-    { id: '017', age: 30, gender: 'Male', weight: 70 },
-    { id: '018', age: 25, gender: 'Female', weight: 55 },
-    { id: '019', age: 30, gender: 'Male', weight: 70 },
-    { id: '020', age: 25, gender: 'Female', weight: 55 },
-    { id: '021', age: 30, gender: 'Male', weight: 70 },
-    { id: '022', age: 25, gender: 'Female', weight: 55 },
-    { id: '023', age: 30, gender: 'Male', weight: 70 },
-    { id: '024', age: 25, gender: 'Female', weight: 55 },
-    { id: '025', age: 30, gender: 'Male', weight: 70 },
-    { id: '026', age: 25, gender: 'Female', weight: 55 },
-    { id: '027', age: 30, gender: 'Male', weight: 70 },
-    { id: '028', age: 25, gender: 'Female', weight: 55 },
-    { id: '029', age: 30, gender: 'Male', weight: 70 },
-    { id: '030', age: 25, gender: 'Female', weight: 55 },
-    { id: '031', age: 30, gender: 'Male', weight: 70 },
-    { id: '032', age: 25, gender: 'Female', weight: 55 },
-    { id: '033', age: 30, gender: 'Male', weight: 70 },
-    { id: '034', age: 25, gender: 'Female', weight: 55 },
-    { id: '035', age: 30, gender: 'Male', weight: 70 },
-    { id: '036', age: 25, gender: 'Female', weight: 55 },
-    { id: '037', age: 30, gender: 'Male', weight: 70 },
-    { id: '038', age: 25, gender: 'Female', weight: 55 },
-    { id: '039', age: 30, gender: 'Male', weight: 70 },
-    { id: '040', age: 25, gender: 'Female', weight: 55 },
-    { id: '051', age: 30, gender: 'Male', weight: 70 },
-    { id: '052', age: 25, gender: 'Female', weight: 55 },
-    { id: '053', age: 30, gender: 'Male', weight: 70 },
-    { id: '054', age: 25, gender: 'Female', weight: 55 },
-    { id: '055', age: 30, gender: 'Male', weight: 70 },
-    { id: '056', age: 25, gender: 'Female', weight: 55 },
-    { id: '057', age: 30, gender: 'Male', weight: 70 },
-    { id: '058', age: 25, gender: 'Female', weight: 55 },
-    { id: '059', age: 30, gender: 'Male', weight: 70 },
-    { id: '050', age: 25, gender: 'Female', weight: 55 },
-    { id: '061', age: 30, gender: 'Male', weight: 70 },
-    { id: '062', age: 25, gender: 'Female', weight: 55 },
-    { id: '063', age: 30, gender: 'Male', weight: 70 },
-    { id: '064', age: 25, gender: 'Female', weight: 55 },
-    { id: '065', age: 30, gender: 'Male', weight: 70 },
-    { id: '066', age: 25, gender: 'Female', weight: 55 },
-    { id: '067', age: 30, gender: 'Male', weight: 70 },
-    { id: '068', age: 25, gender: 'Female', weight: 55 },
-    { id: '069', age: 30, gender: 'Male', weight: 70 },
-    { id: '070', age: 25, gender: 'Female', weight: 55 },
-    { id: '071', age: 30, gender: 'Male', weight: 70 },
-    { id: '072', age: 25, gender: 'Female', weight: 55 },
-    { id: '073', age: 30, gender: 'Male', weight: 70 },
-    { id: '074', age: 25, gender: 'Female', weight: 55 },
-    { id: '075', age: 30, gender: 'Male', weight: 70 },
-    { id: '076', age: 25, gender: 'Female', weight: 55 },
-    { id: '077', age: 30, gender: 'Male', weight: 70 },
-    { id: '078', age: 25, gender: 'Female', weight: 55 },
-    { id: '079', age: 30, gender: 'Male', weight: 70 },
-    { id: '080', age: 25, gender: 'Female', weight: 55 },
-    { id: '081', age: 30, gender: 'Male', weight: 70 },
-    { id: '082', age: 25, gender: 'Female', weight: 55 },
-    { id: '083', age: 30, gender: 'Male', weight: 70 },
-    { id: '084', age: 25, gender: 'Female', weight: 55 },
-    { id: '085', age: 30, gender: 'Male', weight: 70 },
-    { id: '086', age: 25, gender: 'Female', weight: 55 },
-    { id: '087', age: 30, gender: 'Male', weight: 70 },
-    { id: '088', age: 25, gender: 'Female', weight: 55 },
-    { id: '089', age: 30, gender: 'Male', weight: 70 },
-    { id: '090', age: 25, gender: 'Female', weight: 55 },
-    { id: '091', age: 30, gender: 'Male', weight: 70 },
-    { id: '092', age: 25, gender: 'Female', weight: 55 },
-    { id: '093', age: 30, gender: 'Male', weight: 70 },
-    { id: '094', age: 25, gender: 'Female', weight: 55 },
-    { id: '095', age: 30, gender: 'Male', weight: 70 },
-    { id: '096', age: 25, gender: 'Female', weight: 55 },
-    { id: '097', age: 30, gender: 'Male', weight: 70 },
-    { id: '098', age: 25, gender: 'Female', weight: 55 },
-    { id: '099', age: 30, gender: 'Male', weight: 70 },
-    { id: '100', age: 25, gender: 'Female', weight: 55 },
-    // 추가 자 정보...
-  ];
+  const patInfo = getPatientInfoData()
 
   // 현재 페이지에 해당하는 행만 표시합니다.
-  const displayedRows = patientInfo.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-
+  const displayedRows = patInfo.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
   return (
     <div>
       <Fab color="primary" aria-label="search" onClick={handleOpen} sx={{
@@ -202,15 +110,15 @@ const FloatingActionModal = () => {
               <TableBody>
                 {displayedRows.map((row) => (
                   <TableRow
-                    key={row.id}
+                    key={row.pat_id}
                     hover
-                    onClick={() => handleRowClick(row.id)}
+                    onClick={() => handleRowClick(row.pat_id)}
                     style={{ cursor: 'pointer' }}
                   >
-                    <TableCell component="th" scope="row">{row.id}</TableCell>
-                    <TableCell>{row.age}</TableCell>
-                    <TableCell>{row.gender}</TableCell>
-                    <TableCell>{row.weight}</TableCell>
+                    <TableCell component="th" scope="row">{row.pat_id}</TableCell>
+                    <TableCell>{row.real_age}</TableCell>
+                    <TableCell>{row.sex}</TableCell>
+                    <TableCell>{row.patientweight}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -218,7 +126,7 @@ const FloatingActionModal = () => {
           </div>
           <TablePagination
             component="div"
-            count={patientInfo.length}
+            count={patInfo.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
