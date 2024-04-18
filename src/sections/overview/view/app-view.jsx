@@ -6,10 +6,9 @@ import Typography from '@mui/material/Typography';
 
 // import Iconify from 'src/components/iconify';
 
+import { useSelectedPatNo } from '../../../hooks/useStatusHooks';
 // import AppTasks from '../app-tasks';
 // import { useAuth } from 'src/utils/Context API/AuthContext';
-
-import { useStatus } from 'src/utils/Context API/StatusContext';
 
 // import AppNewsUpdate from '../app-news-update';
 import DropdownSelect from '../app-select-dropdown';
@@ -30,15 +29,12 @@ import { getIsDiagnosis, getClinicalMarkers } from '../../../../public/assets/Da
 
 // ----------------------------------------------------------------------
 
-const AppView = () => {
+const AppView = React.memo(() => {
   console.log('AppView has rendered')
 
   // const { isLoggedIn } = useAuth();
 
-  const {
-    isPatSelected,
-    selectedPatNo,
-  } = useStatus()
+  const {selectedPatNo} = useSelectedPatNo();
 
 
   const clinicalMarkers = getClinicalMarkers();
@@ -68,7 +64,7 @@ const AppView = () => {
 
 
       <Grid container spacing={3}>
-        {isPatSelected ?
+        {selectedPatNo ?
           <Grid item xs={12} sm={12} md={12}
             sx={{
               '@media (min-width:1200px)': {
@@ -318,6 +314,6 @@ const AppView = () => {
       </Grid>
     </Container>
   );
-}
+})
 
 export default AppView;

@@ -16,8 +16,6 @@ import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { useStatus } from 'src/utils/Context API/StatusContext';
-
 import { account } from 'src/_mock/account';
 // import { patient } from 'src/_mock/patient';
 
@@ -27,6 +25,7 @@ import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
+import { useSelectedPatNo } from '../../hooks/useStatusHooks';
 import { getPatientInfoData } from '../../../public/assets/Datas/AKFP_Datas';
 
 // ----------------------------------------------------------------------
@@ -36,13 +35,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const upLg = useResponsive('up', 'lg');
 
-  // const [patNo, setPatNo] = useState('')
-
-  const {
-    // isPatSelected, setIsPatSelected,
-    // patientNumber, setPatientNumber,
-    selectedPatNo, setSelectedPatNo,
-  } = useStatus()
+  const { selectedPatNo, setSelectedPatNo } = useSelectedPatNo();
 
   const [patientNumber, setPatientNumber] = useState('')
 

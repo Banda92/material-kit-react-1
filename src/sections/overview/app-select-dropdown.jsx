@@ -13,8 +13,7 @@ import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 import FormControl from '@mui/material/FormControl';
 
-import { useStatus } from 'src/utils/Context API/StatusContext';
-
+import { useSelectedPatNo } from '../../hooks/useStatusHooks';
 import { getResult } from '../../../public/assets/Datas/AKFP_Datas';
 
 
@@ -26,7 +25,7 @@ function DropdownSelect({ title }) {
     const [isAiResult, setIsAiResult] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    const { selectedPatNo } = useStatus();
+    const { selectedPatNo } = useSelectedPatNo();
 
     const result = { getResult }.getResult
     const base64String = `data:image/jpeg;base64,${result.explain_row}`

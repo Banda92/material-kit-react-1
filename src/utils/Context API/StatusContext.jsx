@@ -6,8 +6,8 @@ const StatusContext = createContext({
   isDiagTrue: {},
   setIsDiagTrue: () => { },
 
-  // isPatSelected: {},
-  // setIsPatSelected: () => { },
+  isPatSelected: {},
+  setIsPatSelected: () => { },
 
   selectedPatNo: {},
   setSelectedPatNo: () => { },

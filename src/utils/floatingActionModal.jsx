@@ -15,17 +15,19 @@ import TablePagination from '@mui/material/TablePagination';
 
 import Iconify from 'src/components/iconify';
 
-import { useStatus } from './Context API/StatusContext';
+import { useSelectedPatNo, useOpenPatListModal, } from '../hooks/useStatusHooks';
 
-const FloatingActionModal = () =>{
+const FloatingActionModal = () => {
   // const [open, setOpen] = useState(false);
-  const {openPatListModal, setOpenPatListModal} = useStatus();
+  const { openPatListModal, setOpenPatListModal } = useOpenPatListModal();
+  const { setSelectedPatNo } = useSelectedPatNo();
+
+
+
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const { 
-    setSelectedPatNo,
-  } = useStatus()
 
   const handleOpen = () => setOpenPatListModal(true);
   const handleClose = () => setOpenPatListModal(false);
@@ -156,31 +158,33 @@ const FloatingActionModal = () =>{
   return (
     <div>
       <Fab color="primary" aria-label="search" onClick={handleOpen} sx={{
-          opacity: 0.6,
-          position: 'fixed',
-          bottom: '4vh',
-          right: '5vh',
-          height: '80px',
-          width: '80px',
-          fontSize: '2.3rem',
-          '&:hover, &:active': {
-            opacity: 1,
-          },
-          '@media (max-width:600px)': {
-            height: '60px',
-            width: '60px'
-          },
-        }}>
-          <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+        opacity: 0.6,
+        position: 'fixed',
+        bottom: '4vh',
+        right: '5vh',
+        height: '80px',
+        width: '80px',
+        fontSize: '2.3rem',
+        '&:hover, &:active': {
+          opacity: 1,
+        },
+        '@media (max-width:600px)': {
+          height: '60px',
+          width: '60px'
+        },
+      }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
           <Iconify icon="eva:search-fill" color="white" width={30} />
-          <Typography variant="caption" sx={{ mt: 1,'@media (max-width:600px)': {
-            mt:0, fontSize:'0.6rem'
-          }, }}>
-          환자 선택
-        </Typography>
+          <Typography variant="caption" sx={{
+            mt: 1, '@media (max-width:600px)': {
+              mt: 0, fontSize: '0.6rem'
+            },
+          }}>
+            환자 선택
+          </Typography>
         </div>
-        </Fab>
-        
+      </Fab>
+
 
       <Modal open={openPatListModal} onClose={handleClose}>
         <Box sx={style}>
