@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import { alpha } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import LoadingButton from '@mui/lab/LoadingButton';
 import ListItemButton from '@mui/material/ListItemButton';
 
 import { usePathname } from 'src/routes/hooks';
@@ -21,6 +22,7 @@ import { account } from 'src/_mock/account';
 // import { patient } from 'src/_mock/patient';
 
 import Logo from 'src/components/logo';
+import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
@@ -42,14 +44,17 @@ export default function Nav({ openNav, onCloseNav }) {
     selectedPatNo, setSelectedPatNo,
   } = useStatus()
 
-  const[patientNumber, setPatientNumber] = useState('')
+  const [patientNumber, setPatientNumber] = useState('')
 
-  const handlePatnoInput = (e) => { 
-    setPatientNumber(e.target.value) }
+  const handlePatnoInput = (e) => {
+    setPatientNumber(e.target.value)
+  }
 
-  const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') { 
-    setSelectedPatNo(e.target.value)
-    setPatientNumber('') } 
+  const handleKeyDownSelectPatNo = (e) => {
+    if (e.key === 'Enter') {
+      setSelectedPatNo(e.target.value)
+      setPatientNumber('')
+    }
   }
 
 
@@ -57,11 +62,11 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const [selectedPatData, setSelectedPatData] = useState(null)
 
-  useEffect(()=>{
+  useEffect(() => {
     setSelectedPatData(getPatientInfoData().find(person => person.pat_id === parseInt(selectedPatNo, 10)))
-  },[selectedPatNo])
-  
-  
+  }, [selectedPatNo])
+
+
 
   // useEffect(() => {
   //   // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
@@ -73,7 +78,7 @@ export default function Nav({ openNav, onCloseNav }) {
   // }, [selectedPatNo, setIsPatSelected]);
 
 
-  
+
 
 
 
@@ -140,6 +145,40 @@ export default function Nav({ openNav, onCloseNav }) {
 
   )
 
+  const renderSelectPatientNumber = (
+    <Box
+      sx={{
+        // my: 3,
+        // mx: 2.5,
+        py: 2,
+        px: 2.5,
+        display: 'flex',
+        borderRadius: 1.5,
+        alignItems: 'center',
+        // bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
+      }}
+    >
+
+      <LoadingButton
+        fullWidth
+        size="large"
+        type="submit"
+        variant="contained"
+        color="inherit"
+        // onClick={runPredict}
+        display="flex"
+        sx={{
+          // paddingLeft:'5%',
+          paddingRight:'25px',
+        }}
+        
+      >
+        <Iconify icon="eva:search-fill" color="white" width={25}/>
+        환자 선택
+      </LoadingButton>
+    </Box>
+  )
+
   const renderSelectedPatientInfo = (
     <Box
       sx={{
@@ -153,7 +192,7 @@ export default function Nav({ openNav, onCloseNav }) {
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
       }}
     >
-      
+
       <Box sx={{ ml: 2 }}>
         <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
         <hr />
@@ -250,6 +289,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       {renderAccount}
       {renderSearchPatientNumber}
+      {renderSelectPatientNumber}
       {selectedPatData ? renderSelectedPatientInfo : renderNotSelectedPatientInfo}
       {renderMenu}
       <Box sx={{ flexGrow: 1 }} />

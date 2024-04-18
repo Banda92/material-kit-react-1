@@ -30,7 +30,8 @@ import { getIsDiagnosis, getClinicalMarkers } from '../../../../public/assets/Da
 
 // ----------------------------------------------------------------------
 
-export default function AppView() {
+const AppView = () => {
+  console.log('AppView has rendered')
 
   // const { isLoggedIn } = useAuth();
 
@@ -46,14 +47,17 @@ export default function AppView() {
 
   const isDiagnosis = getIsDiagnosis();
 
+
   function findPersonDetails(array, patId) {
     const { pat_id, ...otherDetails } = array.find(person => person.pat_id === parseInt(patId, 10)) || {};// eslint-disable-line no-unused-vars
     return otherDetails;
   }
 
-  const detailsFromClinicalMarkers = findPersonDetails(clinicalMarkers, selectedPatNo);
+    const detailsFromClinicalMarkers = findPersonDetails(clinicalMarkers, selectedPatNo);
 
-  const detailsFromIsDiagnosis = findPersonDetails(isDiagnosis, selectedPatNo);
+    const detailsFromIsDiagnosis = findPersonDetails(isDiagnosis, selectedPatNo);
+
+
 
 
   return (
@@ -315,3 +319,5 @@ export default function AppView() {
     </Container>
   );
 }
+
+export default AppView;

@@ -71,8 +71,7 @@ useEffect(()=>{setIsAiResult(false)},[selectedPatNo])
                 <>
                     <div className='result'>
                         <h2>
-                            <p>예측 결과 : {Math.round(result.probability * 100) / 100}의 확률로
-                                급성 신부전증 {result.predicted_class === 1 ? "입니다." : "아닙니다."}
+                            <p>급성 신부전증 발생 확률 : {Math.round(result.probability * 100) / 100}%
                             </p>
                         </h2>
                     </div>

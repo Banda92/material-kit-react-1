@@ -17,8 +17,9 @@ import Iconify from 'src/components/iconify';
 
 import { useStatus } from './Context API/StatusContext';
 
-function FloatingActionModal() {
-  const [open, setOpen] = useState(false);
+const FloatingActionModal = () =>{
+  // const [open, setOpen] = useState(false);
+  const {openPatListModal, setOpenPatListModal} = useStatus();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -26,8 +27,8 @@ function FloatingActionModal() {
     setSelectedPatNo,
   } = useStatus()
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpenPatListModal(true);
+  const handleClose = () => setOpenPatListModal(false);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -181,7 +182,7 @@ function FloatingActionModal() {
         </Fab>
         
 
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={openPatListModal} onClose={handleClose}>
         <Box sx={style}>
           <Typography variant="h6" component="h2">환자 리스트</Typography>
           <div style={{ maxHeight: '60vh', overflowY: 'auto' }}> {/* 여기에 스타일을 추가합니다. */}
