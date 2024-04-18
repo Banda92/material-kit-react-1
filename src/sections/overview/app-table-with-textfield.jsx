@@ -7,13 +7,15 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
+import ToggleButton from '../../components/switch/Mui_switch';
+
 // 이 컴포넌트는 편집 가능한 테이블 형태로 여러 개의 데이터 항목을 보여주고 수정할 수 있도록 설계되었습니다.
 // 특히 MUI 컴포넌트를 사용하여 미적으로 깔끔하고 사용자 친화적인 인터페이스를 제공합니다.
-function EditableTable({ title,data }) {
+function EditableTable({ title, data, toggleSwitch }) {
   // useState를 사용하여 컴포넌트의 상태를 관리합니다. 여기서는 여러 데이터 항목의 값을 저장하고 있습니다.
   const [values, setValues] = useState(data);
 
-  // console.log(data)
+  const [isDiagTrue, setIsDiagTrue] = useState(true);
 
   // 각 입력 필드의 값이 변경될 때 호출되는 이벤트 핸들러입니다.
   // 변경된 값은 상태에 반영되어 UI가 즉시 업데이트됩니다.
@@ -33,31 +35,53 @@ function EditableTable({ title,data }) {
       <Typography variant="h6" sx={{ mb: 5 }}>
         {title} {/* 구조 분해 할당을 통해 직접 title을 사용합니다. */}
       </Typography>
-      {console.log(data)}
-{Object.keys(data).length!==0?<>
-      {/* Grid 컨테이너를 사용하여 항목들을 반응형 그리드로 정렬합니다. */}
-      <Grid container spacing={2}>
-        {items.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            {/* Stack 컴포넌트는 각 TextField를 수직으로 정렬합니다. */}
-            <Stack spacing={1}>
-              {/* TextField 컴포넌트를 사용하여 데이터를 입력하고 수정할 수 있습니다. */}
-              <TextField
-                fullWidth // 필드가 그리드 셀의 전체 너비를 차지하도록 설정합니다.
-                label={item.name} // 레이블은 항목의 이름으로 설정됩니다.
-                value={item.value} // 값은 상태에서 관리되는 항목의 값입니다.
-                onChange={handleChange} // 값이 변경될 때 handleChange를 호출합니다.
-                name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
-              />
-            </Stack>
-          </Grid>
-        ))}
-      </Grid>
+
+      {Object.keys(data).length !== 0 ? <>
+        {toggleSwitch === 'Y' && <ToggleButton isDiagTrue={isDiagTrue} setIsDiagTrue={setIsDiagTrue} />}
+        {/* Grid 컨테이너를 사용하여 항목들을 반응형 그리드로 정렬합니다. */}
+        <Grid container spacing={2}>
+          {toggleSwitch === 'Y' ? <>
+            {
+             (isDiagTrue === true ? items.filter(item => item.value === 'Y') : items)
+             .map((item, index) => (
+               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                 <Stack spacing={1}>
+                   <TextField
+                     fullWidth // 필드가 그리드 셀의 전체 너비를 차지하도록 설정합니다.
+                     label={item.name} // 레이블은 항목의 이름으로 설정됩니다.
+                     value={item.value} // 값은 상태에서 관리되는 항목의 값입니다.
+                     onChange={handleChange} // 값이 변경될 때 handleChange를 호출합니다.
+                     name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
+                   />
+                 </Stack>
+               </Grid>
+             ))
+            }</> : <>
+            {
+              items.map((item, index) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                  <Stack spacing={1}>
+                    <TextField
+                      fullWidth // 필드가 그리드 셀의 전체 너비를 차지하도록 설정합니다.
+                      label={item.name} // 레이블은 항목의 이름으로 설정됩니다.
+                      value={item.value} // 값은 상태에서 관리되는 항목의 값입니다.
+                      onChange={handleChange} // 값이 변경될 때 handleChange를 호출합니다.
+                      name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
+                    />
+                  </Stack>
+                </Grid>
+              ))
+            }
+          </>}
+
+
+
+        </Grid>
       </>
-      :
-      <h2>환자를 선택해주세요.</h2>
+        :
+        <h2>환자를 선택해주세요.</h2>
       }
-      
+
     </Card>
   );
 }
@@ -66,6 +90,7 @@ function EditableTable({ title,data }) {
 EditableTable.propTypes = {
   title: PropTypes.string.isRequired,
   data: PropTypes.object,
+  toggleSwitch: PropTypes.string,
 };
 
 export default EditableTable;

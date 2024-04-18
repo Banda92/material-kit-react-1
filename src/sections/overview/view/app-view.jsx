@@ -138,6 +138,7 @@ export default function AppView() {
             key={selectedPatNo}
             // data={isDiagnosis.find(person => person.pat_id === parseInt(selectedPatNo, 10))}
             data={detailsFromIsDiagnosis}
+            toggleSwitch='Y'
 
 
           />
