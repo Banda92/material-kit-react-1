@@ -5,7 +5,7 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { useStatus } from 'src/utils/Context API/StatusContext';
+import { useStatus } from '../../utils/Context API/StatusContext';
 
 
 function PatientInfoGrid() {
