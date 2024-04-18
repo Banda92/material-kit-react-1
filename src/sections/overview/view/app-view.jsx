@@ -1,3 +1,4 @@
+import { memo, useState, useEffect } from 'react';
 // import { faker } from '@faker-js/faker';
 
 import Grid from '@mui/material/Grid';
@@ -27,26 +28,37 @@ import { getIsDiagnosis, getClinicalMarkers } from '../../../../public/assets/Da
 
 
 
+
 // ----------------------------------------------------------------------
 
-const AppView = React.memo(() => {
+const AppView = memo(() => {
   console.log('AppView has rendered')
 
-  // const { isLoggedIn } = useAuth();
+
+  const [isDiagnosis, setIsDiagnosis] = useState([])
+
+  const [clinicalMarkers, setClinicalMarkers] = useState([])
+
 
   const {selectedPatNo} = useSelectedPatNo();
 
 
-  const clinicalMarkers = getClinicalMarkers();
+  // const clinicalMarkers = getClinicalMarkers();
 
   
 
-  const isDiagnosis = getIsDiagnosis();
+  // const isDiagnosis = getIsDiagnosis();
+  useEffect(()=>{
+    setIsDiagnosis(getIsDiagnosis());
+    setClinicalMarkers(getClinicalMarkers());
+  
+  },[])
 
 
-  function findPersonDetails(array, patId) {
+  const findPersonDetails = (array, patId) =>{
     const { pat_id, ...otherDetails } = array.find(person => person.pat_id === parseInt(patId, 10)) || {};// eslint-disable-line no-unused-vars
-    return otherDetails;
+    return (otherDetails);
+    
   }
 
     const detailsFromClinicalMarkers = findPersonDetails(clinicalMarkers, selectedPatNo);
@@ -61,7 +73,6 @@ const AppView = React.memo(() => {
       <Typography variant="h4" sx={{ mb: 5 }}>
         Acute Kidney Failure Prediction 👋
       </Typography>
-
 
       <Grid container spacing={3}>
         {selectedPatNo ?
@@ -314,6 +325,6 @@ const AppView = React.memo(() => {
       </Grid>
     </Container>
   );
-})
+},)
 
 export default AppView;

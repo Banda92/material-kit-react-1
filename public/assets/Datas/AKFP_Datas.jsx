@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import jsonData from './AKFP_sample.json';
 
 const formatSex = (sex) => {
