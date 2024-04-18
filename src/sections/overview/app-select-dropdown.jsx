@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect, } from 'react';
 
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -63,6 +63,7 @@ function DropdownSelect({ title }) {
         console.log('Predict has run')
     }
 
+useEffect(()=>{setIsAiResult(false)},[selectedPatNo])
 
     function renderContent() {
         if (isAiResult) {
