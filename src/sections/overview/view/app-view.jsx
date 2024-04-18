@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 
 import { useStatus } from 'src/utils/Context API/StatusContext';
 
-import AppNewsUpdate from '../app-news-update';
+// import AppNewsUpdate from '../app-news-update';
 import DropdownSelect from '../app-select-dropdown';
 // import AppOrderTimeline from '../app-order-timeline';
 import AppCurrentVisits from '../app-current-visits';
@@ -239,7 +239,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid item xs={12} md={12} lg={12}>
+        {/* <Grid item xs={12} md={12} lg={12}>
           <AppNewsUpdate
             title="News Update"
             list={[...Array(5)].map((_, index) => ({
@@ -250,7 +250,7 @@ export default function AppView() {
               postedAt: faker.date.recent(),
             }))}
           />
-        </Grid>
+        </Grid> */}
 
         {/* <Grid xs={12} md={6} lg={4}>
           <AppOrderTimeline
