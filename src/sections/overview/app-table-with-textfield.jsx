@@ -33,7 +33,8 @@ function EditableTable({ title,data }) {
       <Typography variant="h6" sx={{ mb: 5 }}>
         {title} {/* 구조 분해 할당을 통해 직접 title을 사용합니다. */}
       </Typography>
-{data?<>
+      {console.log(data)}
+{Object.keys(data).length!==0?<>
       {/* Grid 컨테이너를 사용하여 항목들을 반응형 그리드로 정렬합니다. */}
       <Grid container spacing={2}>
         {items.map((item, index) => (
