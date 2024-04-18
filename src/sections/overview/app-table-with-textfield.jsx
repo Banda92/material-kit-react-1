@@ -9,21 +9,11 @@ import Typography from '@mui/material/Typography';
 
 // 이 컴포넌트는 편집 가능한 테이블 형태로 여러 개의 데이터 항목을 보여주고 수정할 수 있도록 설계되었습니다.
 // 특히 MUI 컴포넌트를 사용하여 미적으로 깔끔하고 사용자 친화적인 인터페이스를 제공합니다.
-function EditableTable({ title }) {
+function EditableTable({ title,data }) {
   // useState를 사용하여 컴포넌트의 상태를 관리합니다. 여기서는 여러 데이터 항목의 값을 저장하고 있습니다.
-  const [values, setValues] = useState({
-    item1: "값 1",
-    item2: "값 2",
-    item3: "값 3",
-    item4: "값 4",
-    item5: "값 5",
-    item6: "값 6",
-    item7: "값 7",
-    item8: "값 8",
-    item9: "값 9",
-    item10: "값 10",
-    // 추가 항목을 쉽게 확장할 수 있습니다.
-  });
+  const [values, setValues] = useState(data);
+
+  // console.log(data)
 
   // 각 입력 필드의 값이 변경될 때 호출되는 이벤트 핸들러입니다.
   // 변경된 값은 상태에 반영되어 UI가 즉시 업데이트됩니다.
@@ -43,7 +33,7 @@ function EditableTable({ title }) {
       <Typography variant="h6" sx={{ mb: 5 }}>
         {title} {/* 구조 분해 할당을 통해 직접 title을 사용합니다. */}
       </Typography>
-
+{data?<>
       {/* Grid 컨테이너를 사용하여 항목들을 반응형 그리드로 정렬합니다. */}
       <Grid container spacing={2}>
         {items.map((item, index) => (
@@ -62,6 +52,11 @@ function EditableTable({ title }) {
           </Grid>
         ))}
       </Grid>
+      </>
+      :
+      <h2>환자를 선택해주세요.</h2>
+      }
+      
     </Card>
   );
 }
@@ -69,6 +64,7 @@ function EditableTable({ title }) {
 // props의 타입을 검사하여 title이 반드시 문자열로 전달되어야 함을 지정합니다.
 EditableTable.propTypes = {
   title: PropTypes.string.isRequired,
+  data: PropTypes.object,
 };
 
 export default EditableTable;

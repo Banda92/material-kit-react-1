@@ -38,11 +38,14 @@ export default function Nav({ openNav, onCloseNav }) {
 
   const {
     // isPatSelected, setIsPatSelected,
-    patientNumber, setPatientNumber,
+    // patientNumber, setPatientNumber,
     selectedPatNo, setSelectedPatNo,
   } = useStatus()
 
-  const handlePatnoInput = (e) => { setPatientNumber(e.target.value) }
+  const[patientNumber, setPatientNumber] = useState('')
+
+  const handlePatnoInput = (e) => { 
+    setPatientNumber(e.target.value) }
 
   const handleKeyDownSelectPatNo = (e) => { if (e.key === 'Enter') { 
     setSelectedPatNo(e.target.value)

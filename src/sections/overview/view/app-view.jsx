@@ -23,6 +23,7 @@ import AppCurrentSubject from '../app-current-subject';
 import EditableTable from '../app-table-with-textfield';
 import AppConversionRates from '../app-conversion-rates';
 import PatientInfoGridNotSelected from '../app-patientInfo-grid-notselected';
+import { getIsDiagnosis, getClinicalMarkers } from '../../../../public/assets/Datas/AKFP_Datas';
 
 
 
@@ -35,7 +36,25 @@ export default function AppView() {
 
   const {
     isPatSelected,
+    selectedPatNo,
   } = useStatus()
+
+
+  const clinicalMarkers = getClinicalMarkers();
+
+  
+
+  const isDiagnosis = getIsDiagnosis();
+
+  function findPersonDetails(array, patId) {
+    const { pat_id, ...otherDetails } = array.find(person => person.pat_id === parseInt(patId, 10)) || {};// eslint-disable-line no-unused-vars
+    return otherDetails;
+  }
+
+  const detailsFromClinicalMarkers = findPersonDetails(clinicalMarkers, selectedPatNo);
+
+  const detailsFromIsDiagnosis = findPersonDetails(isDiagnosis, selectedPatNo);
+
 
   return (
     <Container maxWidth="xl">
@@ -106,11 +125,22 @@ export default function AppView() {
         </Grid>
 
         <Grid item xs={12} md={12} lg={12}>
-          <EditableTable title='관리/검사 수치' />
+          <EditableTable title='관리/검사 수치'
+            key={selectedPatNo}
+            data={detailsFromClinicalMarkers}
+
+          />
+
         </Grid>
 
         <Grid item xs={12} md={12} lg={12}>
-          <EditableTable title='진단 여부' />
+          <EditableTable title='진단 여부'
+            key={selectedPatNo}
+            // data={isDiagnosis.find(person => person.pat_id === parseInt(selectedPatNo, 10))}
+            data={detailsFromIsDiagnosis}
+
+
+          />
         </Grid>
 
         <Grid item xs={12} md={12} lg={12}>

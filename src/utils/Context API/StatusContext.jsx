@@ -6,8 +6,8 @@ const StatusContext = createContext({
   isDiagTrue: {},
   setIsDiagTrue: () => { },
 
-  isPatSelected: {},
-  setIsPatSelected: () => { },
+  // isPatSelected: {},
+  // setIsPatSelected: () => { },
 
   selectedPatNo: {},
   setSelectedPatNo: () => { },
@@ -43,7 +43,7 @@ export const StatusProvider = ({ children }) => {
 
   const [isAiResult, setIsAiResult] = useState(false)
   const [isLoading, setIsLoading] = useState(false);
-  const [patientNumber, setPatientNumber] = useState('');
+  // const [patientNumber, setPatientNumber] = useState('');
 
 
 
@@ -55,10 +55,11 @@ export const StatusProvider = ({ children }) => {
     openPatListModal, setOpenPatListModal,
     isAiResult, setIsAiResult,
     isLoading, setIsLoading,
-    patientNumber, setPatientNumber
+    // patientNumber, setPatientNumber
   }), [
     isDiagTrue, isPatSelected, selectedPatNo, openPatListModal,
-    isAiResult, isLoading, patientNumber
+    isAiResult, isLoading, 
+    // patientNumber
   ]);
 
   StatusProvider.propTypes = {
