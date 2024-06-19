@@ -40,7 +40,7 @@ const FloatingActionModal = () => {
     setPage(0); // 페이지 크기가 변경될 때 첫 페이지로 돌아갑니다.
   };
   const handleRowClick = (patientId) => {
-    setSelectedPatNo(patientId);
+    setSelectedPatNo(`${patientId}`);
     handleClose()
   };
 

@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // import { faker } from '@faker-js/faker';
 
 import Grid from '@mui/material/Grid';
@@ -31,7 +31,7 @@ import { getIsDiagnosis, getClinicalMarkers } from '../../../../public/assets/Da
 
 // ----------------------------------------------------------------------
 
-const AppView = memo(() => {
+const AppView = () => {
   console.log('AppView has rendered')
 
 
@@ -325,6 +325,6 @@ const AppView = memo(() => {
       </Grid>
     </Container>
   );
-},)
+}
 
 export default AppView;

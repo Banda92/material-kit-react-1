@@ -39,6 +39,8 @@ export default function Nav({ openNav, onCloseNav }) {
   const { setOpenPatListModal } = useOpenPatListModal();
 
 
+  useEffect(()=>{console.log(selectedPatNo)},[selectedPatNo])
+
   const [patientNumber, setPatientNumber] = useState('')
 
   const handlePatnoInput = (e) => {
