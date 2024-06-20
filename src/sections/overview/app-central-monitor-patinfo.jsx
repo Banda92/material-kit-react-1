@@ -10,7 +10,7 @@ export default function AppCentralMonitorPatinfo({ title, subheader,  ...other }
   
 
   return (
-    <Card {...other}sx={{height:'100%'}}>
+    <Card {...other} sx={{height:'100%'}}>
       <CardHeader title={title} subheader={subheader} />
 
       <Box sx={{ p: 3, pb: 1 }}>
