@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
+
 import {
   Box,
   Card,
-  CardHeader,
   Table,
+  Paper,
+  TableRow,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
-  TableRow,
-  Paper
+  CardHeader,
+  TableContainer,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
