@@ -8,7 +8,7 @@ const icon = (name) => (
 
 const navConfig = [
   {
-    title: 'Dash board',
+    title: 'InnoPMIS',
     path: '/',
     icon: icon('ic_analytics'),
   },
