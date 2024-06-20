@@ -8,7 +8,7 @@ export default function AppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> AKFP | Acute Kidney Failure Prediction </title>
       </Helmet>
 
       <AppView />

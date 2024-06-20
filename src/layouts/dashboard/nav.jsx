@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
-// import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import { alpha } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import LoadingButton from '@mui/lab/LoadingButton';
 import ListItemButton from '@mui/material/ListItemButton';
 
 import { usePathname } from 'src/routes/hooks';
@@ -16,12 +17,16 @@ import { RouterLink } from 'src/routes/components';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import { account } from 'src/_mock/account';
+// import { patient } from 'src/_mock/patient';
 
 import Logo from 'src/components/logo';
+import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
+import { getPatientInfoData } from '../../../public/assets/Datas/AKFP_Datas';
+import { useSelectedPatNo, useOpenPatListModal } from '../../hooks/useStatusHooks';
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +34,55 @@ export default function Nav({ openNav, onCloseNav }) {
   const pathname = usePathname();
 
   const upLg = useResponsive('up', 'lg');
+
+  const { selectedPatNo, setSelectedPatNo } = useSelectedPatNo();
+  const { setOpenPatListModal } = useOpenPatListModal();
+
+
+  useEffect(()=>{console.log(selectedPatNo)},[selectedPatNo])
+
+  const [patientNumber, setPatientNumber] = useState('')
+
+  const handlePatnoInput = (e) => {
+    setPatientNumber(e.target.value)
+  }
+
+  const handleKeyDownSelectPatNo = (e) => {
+    if (e.key === 'Enter') {
+      setSelectedPatNo(e.target.value)
+      setPatientNumber('')
+    }
+  }
+
+  const handleOpen = () => setOpenPatListModal(true);
+
+
+
+  const [selectedPatData, setSelectedPatData] = useState(null)
+
+  useEffect(() => {
+    setSelectedPatData(getPatientInfoData().find(person => person.pat_id === parseInt(selectedPatNo, 10)))
+  }, [selectedPatNo])
+
+
+
+  // useEffect(() => {
+  //   // selectedPatNo가 true로 평가되고 빈 문자열이 아닌지 확인
+  //   if (selectedPatNo && selectedPatNo !== '') {
+  //     setIsPatSelected(true);
+  //   } else {
+  //     setIsPatSelected(false);
+  //   }
+  // }, [selectedPatNo, setIsPatSelected]);
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     if (openNav) {
@@ -62,6 +116,118 @@ export default function Nav({ openNav, onCloseNav }) {
     </Box>
   );
 
+
+  const renderSearchPatientNumber = (
+    <Box
+      sx={{
+        // my: 3,
+        // mx: 2.5,
+        py: 2,
+        px: 2.5,
+        display: 'flex',
+        borderRadius: 1.5,
+        alignItems: 'center',
+        // bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
+      }}
+    >
+      <TextField
+        fullWidth // 필드가 그리드 셀의 전체 너비를 차지하도록 설정합니다.
+        label='환자번호 조회' // 레이블은 항목의 이름으로 설정됩니다.
+        value={patientNumber} // 값은 상태에서 관리되는 항목의 값입니다.
+        onChange={(e) => handlePatnoInput(e)} // 값이 변경될 때 handleChange를 호출합니다.
+        onKeyDown={(e) => handleKeyDownSelectPatNo(e)}
+        // name={item.name} // 각 필드를 식별하기 위한 이름으로 항목의 키를 사용합니다.
+        type='number'
+      />
+    </Box>
+
+  )
+
+  const renderSelectPatientNumber = (
+    <Box
+      sx={{
+        // my: 3,
+        // mx: 2.5,
+        py: 2,
+        px: 2.5,
+        display: 'flex',
+        borderRadius: 1.5,
+        alignItems: 'center',
+        // bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
+      }}
+    >
+
+      <LoadingButton
+        fullWidth
+        size="large"
+        type="submit"
+        variant="contained"
+        // color="inherit"
+        onClick={handleOpen}
+        display="flex"
+        sx={{
+          // paddingLeft:'5%',
+          paddingRight:'30px',
+        }}
+        
+      >
+        <Iconify icon="eva:search-fill" color="white" width={18}/>
+        환자 선택
+      </LoadingButton>
+    </Box>
+  )
+
+  const renderSelectedPatientInfo = (
+    <Box
+      sx={{
+        my: 3,
+        mx: 2.5,
+        py: 2,
+        px: 2.5,
+        display: 'flex',
+        borderRadius: 1.5,
+        alignItems: 'center',
+        bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
+      }}
+    >
+
+      <Box sx={{ ml: 2 }}>
+        <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
+        <hr />
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>환자번호: {selectedPatNo}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>성별: {selectedPatData && selectedPatData.sex}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>나이: {selectedPatData && selectedPatData.real_age}</Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>몸무게: {selectedPatData && selectedPatData.patientweight}</Typography>
+      </Box>
+    </Box>
+  )
+
+  const renderNotSelectedPatientInfo = (
+    <Box
+      sx={{
+        my: 3,
+        mx: 2.5,
+        py: 2,
+        px: 2.5,
+        display: 'flex',
+        borderRadius: 1.5,
+        alignItems: 'center',
+        bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
+      }}
+    >
+
+      <Box sx={{ ml: 2 }}>
+        <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>선택환자 정보</Typography>
+        <hr />
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}> 선택된 환자 정보가 존재하지 않습니다. 대상 환자를 선택해주세요.
+        </Typography>
+
+      </Box>
+    </Box>
+  )
+
+
+
   const renderMenu = (
     <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
       {navConfig.map((item) => (
@@ -88,7 +254,7 @@ export default function Nav({ openNav, onCloseNav }) {
           <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
             반영훈
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1, mb:2 }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
             010-7595-7666 qksdudgns92@gmail.com
           </Typography>
 
@@ -120,9 +286,10 @@ export default function Nav({ openNav, onCloseNav }) {
       <Logo sx={{ mt: 3, ml: 4 }} />
 
       {renderAccount}
-
+      {renderSearchPatientNumber}
+      {renderSelectPatientNumber}
+      {selectedPatData ? renderSelectedPatientInfo : renderNotSelectedPatientInfo}
       {renderMenu}
-
       <Box sx={{ flexGrow: 1 }} />
 
       {renderHelp}

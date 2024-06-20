@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 
+import FloatingActionModal from 'src/utils/floatingActionModal';
+
 import Nav from './nav';
 import Main from './main';
 import Header from './header';
+
+
 
 // ----------------------------------------------------------------------
 
@@ -15,6 +19,7 @@ export default function DashboardLayout({ children }) {
   return (
     <>
       <Header onOpenNav={() => setOpenNav(true)} />
+      <FloatingActionModal/>
 
       <Box
         sx={{
@@ -23,7 +28,10 @@ export default function DashboardLayout({ children }) {
           flexDirection: { xs: 'column', lg: 'row' },
         }}
       >
+        
         <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
+
+        
 
         <Main>{children}</Main>
       </Box>
