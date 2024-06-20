@@ -33,15 +33,15 @@ export default function AppView() {
   return (
     <Container maxWidth="xl" sx={{ height: `${innerHeight - 80 - innerHeight * 0.06}px` }}>
       <Grid container spacing={3} sx={{ height: '100%' }}>
-        <Grid item xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap:3}}>
-          <Grid item sx={{ flexBasis: '70%', flexShrink: 0 }}>
+        <Grid  xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap:3}}>
+          <Grid  sx={{ flexBasis: '70%', flexShrink: 0 }}>
             <AppCentralMonitor title="Central Monitor" />
           </Grid>
-          <Grid item sx={{ flexBasis: '30%', flexGrow: 1, overflow: 'auto' }}>
+          <Grid  sx={{ flexBasis: '30%', flexGrow: 1, overflow: 'auto' }}>
             <AppCentralMonitorPatinfo title="Patient Information" />
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={5} sx={{ height: '100%' }}>
+        <Grid  xs={12} sm={6} md={5} sx={{ height: '100%' }}>
           <AppCentralMonitorData title="Most Recently Received Data" />
         </Grid>
       </Grid>
