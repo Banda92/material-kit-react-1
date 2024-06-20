@@ -38,7 +38,7 @@ export default function AppView() {
       </Typography>
       <Grid container spacing={3} sx={{ height: '100%' }}>
         <Grid  xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap:3}}>
-          <Grid  sx={{ flexBasis: '30%', flexShrink: 0 }}>
+          <Grid  sx={{ flexBasis: '', flexShrink: 0 }}>
             <AppCentralMonitor title="Central Monitor" />
           </Grid>
           <Grid  sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
