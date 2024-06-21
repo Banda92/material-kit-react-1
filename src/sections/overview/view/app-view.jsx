@@ -6,6 +6,7 @@ import { Card, Typography, CardContent } from '@mui/material';
 
 import AppCentralMonitor from '../app-central-monitor';
 import AppCentralMonitorData from '../app-central-monitor-data';
+import AppCentralMonitorVital from '../app-central-monitor-vital'; 
 import AppCentralMonitorPatinfo from '../app-central-monitor-patinfo';
 
 // ----------------------------------------------------------------------
@@ -54,7 +55,7 @@ export default function AppView() {
                 <AppCentralMonitorData title="Most Recently Received Data" />
               </Grid>
               <Grid sx={{ flexBasis: 'auto', flexShrink: 0, flexGrow: 1 }}>
-                <AppCentralMonitorData title="Vital Monitor" />
+                <AppCentralMonitorVital title="Vital Monitor" /> 
               </Grid>
             </Grid>
           </Grid>
