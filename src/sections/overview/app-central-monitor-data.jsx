@@ -1,21 +1,31 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { ExpandMore, ExpandLess } from '@mui/icons-material';
 import {
   Box,
   Card,
   Table,
   Paper,
   TableRow,
+  Collapse,
   TableBody,
   TableCell,
   TableHead,
   CardHeader,
+  IconButton,
   TableContainer,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 export default function AppCentralMonitorData({ title, subheader, ...other }) {
+  const [expanded, setExpanded] = useState(true);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   const labData = {
     "LabData": [
       {
@@ -62,37 +72,47 @@ export default function AppCentralMonitorData({ title, subheader, ...other }) {
   };
 
   return (
-    <Card {...other} sx={{ height: '100%' }}>
-      <CardHeader title={title} subheader={subheader} />
+    <Card {...other} sx={{ transition: 'height 0.3s ease', height: expanded ? 'auto' : '56px' }}>
+      <CardHeader
+        title={title}
+        subheader={subheader}
+        action={
+          <IconButton onClick={handleExpandClick}>
+            {expanded ? <ExpandLess /> : <ExpandMore />}
+          </IconButton>
+        }
+      />
 
-      <Box sx={{ p: 3, pb: 1 }}>
-        <TableContainer component={Paper}>
-          <Table stickyHeader>
-            <TableHead>
-              <TableRow>
-                <TableCell>Index</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Time</TableCell>
-                <TableCell>Item</TableCell>
-                <TableCell>Code</TableCell>
-                <TableCell>Value</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {labData.LabData.map((row) => (
-                <TableRow key={row.Index}>
-                  <TableCell>{row.Index}</TableCell>
-                  <TableCell>{row.Date}</TableCell>
-                  <TableCell>{row.Time}</TableCell>
-                  <TableCell>{row.Item}</TableCell>
-                  <TableCell>{row.Code}</TableCell>
-                  <TableCell>{row.Value}</TableCell>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Box sx={{ p: 3, pb: 1 }}>
+          <TableContainer component={Paper} sx={{ maxHeight: 400 }}>
+            <Table stickyHeader>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Index</TableCell>
+                  <TableCell>Date</TableCell>
+                  <TableCell>Time</TableCell>
+                  <TableCell>Item</TableCell>
+                  <TableCell>Code</TableCell>
+                  <TableCell>Value</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
+              </TableHead>
+              <TableBody>
+                {labData.LabData.map((row) => (
+                  <TableRow key={row.Index}>
+                    <TableCell>{row.Index}</TableCell>
+                    <TableCell>{row.Date}</TableCell>
+                    <TableCell>{row.Time}</TableCell>
+                    <TableCell>{row.Item}</TableCell>
+                    <TableCell>{row.Code}</TableCell>
+                    <TableCell>{row.Value}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
+      </Collapse>
     </Card>
   );
 }

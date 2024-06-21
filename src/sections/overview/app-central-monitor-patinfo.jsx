@@ -105,7 +105,7 @@ export default function AppCentralMonitorPatinfo({ title, subheader, ...other })
         }
       />
 
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout="auto" unmountOnExit >
         <Box sx={{ p: 3, pb: 1 }}>
           <Grid container spacing={2} alignItems="center" mb={2}>
             <Grid item xs={12} sm={6}>

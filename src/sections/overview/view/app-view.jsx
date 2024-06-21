@@ -33,20 +33,25 @@ export default function AppView() {
 
   return (
     <Container maxWidth="xl" sx={{ height: `${innerHeight - 80 - 36 - innerHeight * 0.06}px` }}>
-       <Typography variant="h4" sx={{ mb: 3 }}>
-        InnoPMIS
+      <Typography variant="h4" sx={{ mb: 3 }}>
+        MediumsPMIS
       </Typography>
       <Grid container spacing={3} sx={{ height: '100%' }}>
-        <Grid  xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: 'auto', gap:3}}>
-          <Grid  sx={{ flexBasis: '', flexShrink: 0 }}>
+        <Grid xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
+          <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
             <AppCentralMonitor title="Central Monitor" />
           </Grid>
-          <Grid  sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
+          <Grid sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
             <AppCentralMonitorPatinfo title="Patient Information" />
           </Grid>
         </Grid>
-        <Grid  xs={12} sm={6} md={5} sx={{ height: '100%' }}>
-          <AppCentralMonitorData title="Most Recently Received Data" />
+        <Grid xs={12} sm={6} md={5} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
+          <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
+            <AppCentralMonitorData title="Most Recently Received Data" />
+          </Grid>
+          <Grid sx={{ flexBasis: 'auto', flexShrink: 0, flexGrow: 1 }}>
+            <AppCentralMonitorData title="Vital Monitor" />
+          </Grid>
         </Grid>
       </Grid>
     </Container>

@@ -53,7 +53,7 @@ export default function AppCentralMonitor({ title, subheader, ...other }) {
   };
 
   return (
-    <Box sx={{ p: 0 }}>
+    <Box sx={{ p: 0,  }} >
       <Card {...other} sx={{ height: 'auto' }}>
         <CardHeader 
           title={title} 
