@@ -1,172 +1,63 @@
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import Table from '@mui/material/Table';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import TableBody from '@mui/material/TableBody';
-import Typography from '@mui/material/Typography';
-import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
+import Grid from '@mui/material/Unstable_Grid2';
+import { Card, Typography, CardContent } from '@mui/material';
 
-import { users } from 'src/_mock/user';
+import HdcsOrderInfo from '../hdcs-orders-info';
 
-import Iconify from 'src/components/iconify';
-import Scrollbar from 'src/components/scrollbar';
-
-import TableNoData from '../table-no-data';
-import UserTableRow from '../user-table-row';
-import UserTableHead from '../user-table-head';
-import TableEmptyRows from '../table-empty-rows';
-import UserTableToolbar from '../user-table-toolbar';
-import { emptyRows, applyFilter, getComparator } from '../utils';
 
 // ----------------------------------------------------------------------
 
 export default function HDCS() {
-  const [page, setPage] = useState(0);
+  const prevHeight = useRef(window.innerHeight);
+  useEffect(() => {
+    const handleResize = () => {
+      const currentHeight = window.innerHeight;
+      if (prevHeight.current !== currentHeight) {
+        console.log('Inner Height:', currentHeight);
+        setInnerHeight(currentHeight);
+      }
+    };
 
-  const [order, setOrder] = useState('asc');
+    window.addEventListener('resize', handleResize);
 
-  const [selected, setSelected] = useState([]);
+    // 컴포넌트가 언마운트될 때 이벤트 리스너를 정리합니다.
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
-  const [orderBy, setOrderBy] = useState('name');
-
-  const [filterName, setFilterName] = useState('');
-
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-
-  const handleSort = (event, id) => {
-    const isAsc = orderBy === id && order === 'asc';
-    if (id !== '') {
-      setOrder(isAsc ? 'desc' : 'asc');
-      setOrderBy(id);
-    }
-  };
-
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = users.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setPage(0);
-    setRowsPerPage(parseInt(event.target.value, 10));
-  };
-
-  const handleFilterByName = (event) => {
-    setPage(0);
-    setFilterName(event.target.value);
-  };
-
-  const dataFiltered = applyFilter({
-    inputData: users,
-    comparator: getComparator(order, orderBy),
-    filterName,
-  });
-
-  const notFound = !dataFiltered.length && !!filterName;
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight);
 
   return (
-    <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Users</Typography>
-
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New User
-        </Button>
-      </Stack>
-
-      <Card>
-        <UserTableToolbar
-          numSelected={selected.length}
-          filterName={filterName}
-          onFilterName={handleFilterByName}
-        />
-
-        <Scrollbar>
-          <TableContainer sx={{ overflow: 'unset' }}>
-            <Table sx={{ minWidth: 800 }}>
-              <UserTableHead
-                order={order}
-                orderBy={orderBy}
-                rowCount={users.length}
-                numSelected={selected.length}
-                onRequestSort={handleSort}
-                onSelectAllClick={handleSelectAllClick}
-                headLabel={[
-                  { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
-                  { id: '' },
-                ]}
-              />
-              <TableBody>
-                {dataFiltered
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
-                    <UserTableRow
-                      key={row.id}
-                      name={row.name}
-                      role={row.role}
-                      status={row.status}
-                      company={row.company}
-                      avatarUrl={row.avatarUrl}
-                      isVerified={row.isVerified}
-                      selected={selected.indexOf(row.name) !== -1}
-                      handleClick={(event) => handleClick(event, row.name)}
-                    />
-                  ))}
-
-                <TableEmptyRows
-                  height={77}
-                  emptyRows={emptyRows(page, rowsPerPage, users.length)}
-                />
-
-                {notFound && <TableNoData query={filterName} />}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Scrollbar>
-
-        <TablePagination
-          page={page}
-          component="div"
-          count={users.length}
-          rowsPerPage={rowsPerPage}
-          onPageChange={handleChangePage}
-          rowsPerPageOptions={[5, 10, 25]}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+    <Container maxWidth="xl" sx={{ height: `${innerHeight - 80 - 36 - innerHeight * 0.06}px` }}>
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ flexGrow: 0 }}>
+          <Typography variant="h4" sx={{ mb: 3 }}>
+            MediumsPMIS
+          </Typography>
+        </CardContent>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Grid container spacing={3} sx={{ height: '100%' }}>
+            <Grid xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
+              <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
+              <HdcsOrderInfo title="Order Infomations"/>
+              </Grid>
+              <Grid sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
+                {/* <AppCentralMonitorPatinfo title="Patient Information" /> */}
+              </Grid>
+            </Grid>
+            <Grid xs={12} sm={6} md={5} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
+              <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
+                {/* <AppCentralMonitorData title="Most Recently Received Data" /> */}
+              </Grid>
+              <Grid sx={{ flexBasis: 'auto', flexShrink: 0, flexGrow: 1 }}>
+                {/* <AppCentralMonitorVital title="Vital Monitor" />  */}
+              </Grid>
+            </Grid>
+          </Grid>
+        </CardContent>
       </Card>
     </Container>
   );
