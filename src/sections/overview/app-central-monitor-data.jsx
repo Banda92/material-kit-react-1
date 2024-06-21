@@ -85,7 +85,7 @@ export default function AppCentralMonitorData({ title, subheader, ...other }) {
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Box sx={{ p: 3, pb: 1 }}>
-          <TableContainer component={Paper} sx={{ maxHeight: 400 }}>
+          <TableContainer component={Paper} sx={{ maxHeight: 400, whiteSpace: 'nowrap' }} >
             <Table stickyHeader>
               <TableHead>
                 <TableRow>

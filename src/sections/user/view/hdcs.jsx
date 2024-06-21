@@ -5,6 +5,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Card, Typography, CardContent } from '@mui/material';
 
 import HdcsOrderInfo from '../hdcs-orders-info';
+import HdcsEventViewer from '../hdcs-orders-event';
 
 
 // ----------------------------------------------------------------------
@@ -45,6 +46,7 @@ export default function HDCS() {
               <HdcsOrderInfo title="Order Infomations"/>
               </Grid>
               <Grid sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
+                <HdcsEventViewer title="Event Viewer"/>
                 {/* <AppCentralMonitorPatinfo title="Patient Information" /> */}
               </Grid>
             </Grid>

@@ -129,7 +129,7 @@ export default function AppCentralMonitorPatinfo({ title, subheader, ...other })
             </Grid>
           </Grid>
 
-          <TableContainer component={Paper} >
+          <TableContainer component={Paper}  sx={{ whiteSpace: 'nowrap' }}>
             <Table stickyHeader>
               <TableHead>
                 <TableRow>

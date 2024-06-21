@@ -141,15 +141,15 @@ export default function HdcsOrderInfo({ title, subheader, ...other }) {
               </Grid>
             </Grid>
 
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper}  sx={{ whiteSpace: 'nowrap' }}>
               <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>등록번호</TableCell>
                     <TableCell>이름</TableCell>
                     <TableCell>실행일자</TableCell>
-                    <TableCell>오더 발행처</TableCell>
-                    <TableCell>검사이름</TableCell>
+                    <TableCell>발행처</TableCell>
+                    <TableCell>검사명</TableCell>
                     <TableCell>검사코드</TableCell>
                     <TableCell>판독번호</TableCell>
                     <TableCell>검사일자</TableCell>

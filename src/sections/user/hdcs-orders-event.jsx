@@ -58,7 +58,7 @@ const ordersData = {
 
 // ----------------------------------------------------------------------
 
-export default function HdcsOrderInfo({ title, subheader, ...other }) {
+export default function HdcsEventViewer({ title, subheader, ...other }) {
   const [expanded, setExpanded] = useState(true);
   const [examSite, setExamSite] = useState('');
   const [patientID, setPatientID] = useState('');
@@ -188,7 +188,7 @@ export default function HdcsOrderInfo({ title, subheader, ...other }) {
   );
 }
 
-HdcsOrderInfo.propTypes = {
+HdcsEventViewer.propTypes = {
   subheader: PropTypes.string,
   title: PropTypes.string,
 };
