@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 
-import { UserView } from 'src/sections/user/view';
+import { PMIS } from 'src/sections/overview/view';
 
 // ----------------------------------------------------------------------
 
-export default function UserPage() {
+export default function mediumPMIS() {
   return (
     <>
       <Helmet>
-        <title> User | Minimal UI </title>
+        <title> mediumPMIS | Acute Kidney Failure Prediction </title>
       </Helmet>
 
-      <UserView />
+      <PMIS />
     </>
   );
 }

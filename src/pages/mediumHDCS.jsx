@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 
-import { AppView } from 'src/sections/overview/view';
+import { HDCS } from 'src/sections/user/view/';
 
 // ----------------------------------------------------------------------
 
-export default function AppPage() {
+export default function mediumHDCS() {
   return (
     <>
       <Helmet>
-        <title> AKFP | Acute Kidney Failure Prediction </title>
+        <title> mediumHDCS | Minimal UI </title>
       </Helmet>
 
-      <AppView />
+      <HDCS />
     </>
   );
 }

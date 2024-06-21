@@ -11,7 +11,7 @@ import AppCentralMonitorPatinfo from '../app-central-monitor-patinfo';
 
 // ----------------------------------------------------------------------
 
-export default function AppView() {
+export default function PMIS() {
   const prevHeight = useRef(window.innerHeight);
   useEffect(() => {
     const handleResize = () => {
