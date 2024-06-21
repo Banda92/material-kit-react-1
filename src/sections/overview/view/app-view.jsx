@@ -37,7 +37,7 @@ export default function AppView() {
         InnoPMIS
       </Typography>
       <Grid container spacing={3} sx={{ height: '100%' }}>
-        <Grid  xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap:3}}>
+        <Grid  xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: 'auto', gap:3}}>
           <Grid  sx={{ flexBasis: '', flexShrink: 0 }}>
             <AppCentralMonitor title="Central Monitor" />
           </Grid>

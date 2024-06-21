@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
-import { 
-        useRef,
-        useState,
-        useEffect,
-} from 'react';
+import { useRef, useState, useEffect, } from 'react';
 
 import { Add, Edit, Delete, ExpandMore, ExpandLess } from '@mui/icons-material';
 import {
@@ -25,20 +21,14 @@ import {
   InputLabel,
   IconButton,
   FormControl,
-  TableContainer,
+  TableContainer
 } from '@mui/material';
-
-
-
-
-
-
 
 export default function AppCentralMonitorPatinfo({ title, subheader, ...other }) {
   const [selectedWard, setSelectedWard] = useState('All');
   const [currentTime, setCurrentTime] = useState(new Date());
   const [expanded, setExpanded] = useState(true);
-  const tableContainerRef = useRef(null);
+  const cardRef = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -104,7 +94,7 @@ export default function AppCentralMonitorPatinfo({ title, subheader, ...other })
   };
 
   return (
-    <Card {...other} sx={{ height: '100%' }}>
+    <Card {...other} ref={cardRef} sx={{ transition: 'height 0.3s ease', height: expanded ? 'auto' : '56px' }}>
       <CardHeader
         title={title}
         subheader={subheader}
@@ -139,7 +129,7 @@ export default function AppCentralMonitorPatinfo({ title, subheader, ...other })
             </Grid>
           </Grid>
 
-          <TableContainer component={Paper} sx={{ maxHeight: expanded ? 250 : 0 }} ref={tableContainerRef}>
+          <TableContainer component={Paper} >
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
