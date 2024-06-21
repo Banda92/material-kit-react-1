@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 
-import { Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
+import { Card, Typography, CardContent } from '@mui/material';
 
 import AppCentralMonitor from '../app-central-monitor';
 import AppCentralMonitorData from '../app-central-monitor-data';
@@ -33,27 +33,33 @@ export default function AppView() {
 
   return (
     <Container maxWidth="xl" sx={{ height: `${innerHeight - 80 - 36 - innerHeight * 0.06}px` }}>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        MediumsPMIS
-      </Typography>
-      <Grid container spacing={3} sx={{ height: '100%' }}>
-        <Grid xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
-          <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
-            <AppCentralMonitor title="Central Monitor" />
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ flexGrow: 0 }}>
+          <Typography variant="h4" sx={{ mb: 3 }}>
+            MediumsPMIS
+          </Typography>
+        </CardContent>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Grid container spacing={3} sx={{ height: '100%' }}>
+            <Grid xs={12} sm={6} md={7} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
+              <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
+                <AppCentralMonitor title="Central Monitor" />
+              </Grid>
+              <Grid sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
+                <AppCentralMonitorPatinfo title="Patient Information" />
+              </Grid>
+            </Grid>
+            <Grid xs={12} sm={6} md={5} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
+              <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
+                <AppCentralMonitorData title="Most Recently Received Data" />
+              </Grid>
+              <Grid sx={{ flexBasis: 'auto', flexShrink: 0, flexGrow: 1 }}>
+                <AppCentralMonitorData title="Vital Monitor" />
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid sx={{ flexBasis: 1, flexGrow: 1, overflow: 'auto' }}>
-            <AppCentralMonitorPatinfo title="Patient Information" />
-          </Grid>
-        </Grid>
-        <Grid xs={12} sm={6} md={5} sx={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 3 }}>
-          <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
-            <AppCentralMonitorData title="Most Recently Received Data" />
-          </Grid>
-          <Grid sx={{ flexBasis: 'auto', flexShrink: 0, flexGrow: 1 }}>
-            <AppCentralMonitorData title="Vital Monitor" />
-          </Grid>
-        </Grid>
-      </Grid>
+        </CardContent>
+      </Card>
     </Container>
   );
 }
