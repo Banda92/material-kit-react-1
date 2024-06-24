@@ -3,6 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Card, Typography, CardContent } from '@mui/material';
 
 import Overview from '../overview';
+import ActiveRate from '../active-rate';
 import UserManagement from '../user-management';
 // import DeviceManagement from '../device-management';
 import AlertsManagement from '../alerts-management';
@@ -31,9 +32,9 @@ export default function Dashboard() {
               </Grid>
             </Grid>
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-              {/* <Grid sx={{ flexGrow: 1 }}>
-                <DeviceManagement title="Device Management" />
-              </Grid> */}
+              <Grid sx={{ flexGrow: 1 }}>
+                <ActiveRate title="Active Rate"/>
+              </Grid>
               <Grid sx={{ flexGrow: 1 }}>
                 <DeviceStatusMonitoring title="Device Status Monitoring" />
               </Grid>

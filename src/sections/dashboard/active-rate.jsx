@@ -28,7 +28,7 @@ ChartJS.register(
   Legend
 );
 
-export default function Overview({ title }) {
+export default function ActiveRate({ title }) {
   const deviceData = [
     { type: 'Device1', total: 50, active: 10, inactive: 40 },
     { type: 'Device2', total: 20, active: 9, inactive: 11 },
@@ -131,6 +131,6 @@ export default function Overview({ title }) {
   );
 }
 
-Overview.propTypes = {
+ActiveRate.propTypes = {
   title: PropTypes.string.isRequired,
 };
