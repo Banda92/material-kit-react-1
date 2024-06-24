@@ -3,7 +3,8 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import DashboardLayout from 'src/layouts/dashboard';
 
-export const IndexPage = lazy(() => import('src/pages/mediumPMIS'));
+export const IndexPage = lazy(() => import('src/pages/mediumDashboard'));
+export const PmisPage = lazy(() => import('src/pages/mediumPMIS'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/mediumHDCS'));
 export const LoginPage = lazy(() => import('src/pages/login'));
@@ -25,7 +26,8 @@ export default function Router() {
       children: [
         { element: <IndexPage />, index: true },
         { path: 'hdcs', element: <UserPage /> },
-        { path: 'dashboard', element: <DashboardPage /> },
+        // { path: 'dashboard', element: <DashboardPage /> },
+        { path: 'pmis', element: <PmisPage /> },
         { path: 'blog', element: <BlogPage /> },
       ],
     },

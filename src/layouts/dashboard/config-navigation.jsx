@@ -8,19 +8,19 @@ const icon = (name) => (
 
 const navConfig = [
   {
-    title: 'MediumsPMIS',
+    title: 'MediumDashboard ',
     path: '/',
+    icon: icon('ic_cart'),
+  },
+  {
+    title: 'MediumsPMIS',
+    path: '/pmis',
     icon: icon('ic_analytics'),
   },
   {
     title: 'MediumHDCS',
     path: '/hdcs',
     icon: icon('ic_user'),
-  },
-  {
-    title: 'MediumDashboard ',
-    path: '/dashboard',
-    icon: icon('ic_cart'),
   },
   {
     title: 'Page 4',
