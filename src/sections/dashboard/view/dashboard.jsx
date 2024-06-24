@@ -23,7 +23,7 @@ export default function Dashboard() {
           <Grid container spacing={3} sx={{ height: '100%' }}>
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               <Grid sx={{ flexGrow: 1 }}>
-                <Overview title="Active Rate" />
+                <Overview title="Overview" />
               </Grid>
 
               <Grid >
