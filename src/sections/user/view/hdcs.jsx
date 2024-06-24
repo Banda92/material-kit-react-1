@@ -37,7 +37,7 @@ export default function HDCS() {
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flexGrow: 0 }}>
           <Typography variant="h4" sx={{ mb: 3 }}>
-            MediumsPMIS
+            MediumsHDCS
           </Typography>
         </CardContent>
         <CardContent sx={{ flexGrow: 1 }}>
@@ -54,9 +54,6 @@ export default function HDCS() {
               <Grid sx={{ flexBasis: 'auto', flexShrink: 0 }}>
                 <HdcsResults title="ECG/EP - Results"/>
               </Grid>
-              {/* <Grid sx={{ flexBasis: 'auto', flexShrink: 0, flexGrow: 1 }}> */}
-                {/* <AppCentralMonitorVital title="Vital Monitor" />  */}
-              {/* </Grid> */}
             </Grid>
           </Grid>
         </CardContent>
