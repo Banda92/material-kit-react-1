@@ -13,7 +13,7 @@ import DeviceStatusMonitoring from '../device-status-monitoring';
 
 export default function Dashboard() {
   return (
-    <Container maxWidth="xl" sx={{ height: 'auto', minWidth: '80%' }}>
+    <Container maxWidth="xl" sx={{ height: 'auto', minWidth: 'auto' }}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flexGrow: 0 }}>
           <Typography variant="h4" sx={{ mb: 3 }}>
