@@ -4,7 +4,7 @@ import { Card, Typography, CardContent } from '@mui/material';
 
 import Overview from '../overview';
 import UserManagement from '../user-management';
-import DeviceManagement from '../device-management';
+// import DeviceManagement from '../device-management';
 import AlertsManagement from '../alerts-management';
 import DeviceStatusMonitoring from '../device-status-monitoring';
 
@@ -12,7 +12,7 @@ import DeviceStatusMonitoring from '../device-status-monitoring';
 
 export default function Dashboard() {
   return (
-    <Container maxWidth="xl" sx={{ height: 'auto' }}>
+    <Container maxWidth="xl" sx={{ height: 'auto', minWidth: '80%' }}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flexGrow: 0 }}>
           <Typography variant="h4" sx={{ mb: 3 }}>
@@ -25,22 +25,22 @@ export default function Dashboard() {
               <Grid sx={{ flexGrow: 1 }}>
                 <Overview title="Overview" />
               </Grid>
-              
+
               <Grid >
                 <UserManagement title="User Management" />
               </Grid>
             </Grid>
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <Grid sx={{ flexGrow: 1 }}>
+              {/* <Grid sx={{ flexGrow: 1 }}>
                 <DeviceManagement title="Device Management" />
-              </Grid>
+              </Grid> */}
               <Grid sx={{ flexGrow: 1 }}>
                 <DeviceStatusMonitoring title="Device Status Monitoring" />
               </Grid>
               <Grid >
                 <AlertsManagement title="Alerts Management" />
               </Grid>
-              
+
             </Grid>
           </Grid>
         </CardContent>

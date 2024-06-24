@@ -74,7 +74,10 @@ export default function Overview({ title }) {
             </Card>
           </Grid>
         </Grid>
-        <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>          <Line data={data} />
+        <Box sx={{ mt: 0, display: 'flex', justifyContent: 'center' }}>
+          <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%', maxWidth: '600px' }}>
+            <Line data={data} />
+          </Box>
         </Box>
       </CardContent>
     </Card>

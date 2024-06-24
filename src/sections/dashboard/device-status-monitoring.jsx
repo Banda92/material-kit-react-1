@@ -92,8 +92,9 @@ export default function DeviceStatusMonitoring({ title }) {
     <Card>
       <CardContent>
         <Typography variant="h5">{title}</Typography>
-        <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
-        <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:'100%' }}>            <Bar data={data} options={options} />
+        <Box sx={{ mt: 0, display: 'flex', justifyContent: 'center' }}>
+          <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%', maxWidth:'600px' }}>            
+          <Bar data={data} options={options} />
           </Box>
         </Box>
       </CardContent>
