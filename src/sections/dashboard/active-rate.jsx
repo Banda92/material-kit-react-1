@@ -52,7 +52,8 @@ export default function ActiveRate({ title }) {
                       colors={['#FF6384', '#FFCE56', '#36A2EB']}
                       arcWidth={0.3}
                       percent={calculateActiveRate(device.active, device.total)}
-                      formatTextValue={(value) => `${value.toFixed(2)}%`}
+                      // formatTextValue={(value) => `${value.toFixed(2)}%`}
+                      formatTextValue={(value)=>`${value}%`}
                       textColor={getColor(calculateActiveRate(device.active, device.total))}
                       style={{ width: '100%' }}
                     />

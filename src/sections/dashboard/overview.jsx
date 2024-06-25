@@ -32,7 +32,7 @@ ChartJS.register(
 
 export default function Overview({ title }) {
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['2024-01-01', '2024-02-01', '2024-03-01', '2024-04-01', '2024-05-01', '2024-06-01', '2024-07-01'],
     datasets: [
       {
         label: 'Active Devices',
@@ -44,6 +44,25 @@ export default function Overview({ title }) {
     ],
   };
 
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100,
+      },
+      x: {
+        type: 'category',
+        labels: data.labels,
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+    maintainAspectRatio: false
+  };
+
   return (
     <Card>
       <CardContent>
@@ -52,31 +71,31 @@ export default function Overview({ title }) {
           <Grid item xs={12} sm={4}>
             <Card >
               <CardContent align="center">
-                <Typography variant="h6">Total Devices</Typography>
-                <Typography mt={1} variant="body2">100</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Card>
-              <CardContent align="center">
                 <Typography variant="h6">Active Devices</Typography>
-                <Typography mt={1} variant="body2">80</Typography>
+                <Typography mt={1} variant="h4" sx={{ fontWeight: 'bold', color: '#1976d2' }}>80</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Card>
               <CardContent align="center">
-                <Typography variant="h6">Inactive Devices</Typography>
-                <Typography mt={1} variant="body2">20</Typography>
+                <Typography variant="h6">Total Devices</Typography>
+                <Typography mt={1} variant="h4" sx={{ fontWeight: 'bold', color: '#1976d2' }}>100</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Card>
+              <CardContent align="center">
+                <Typography variant="h6">Active Rate</Typography>
+                <Typography mt={1} variant="h4" sx={{ fontWeight: 'bold', color: '#1976d2' }}>80%</Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
         <Box sx={{ mt: 0, display: 'flex', justifyContent: 'center' }}>
           <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxHeight: '300px', width: '100%'}}>
-            <Line data={data} />
+            <Line data={data} options={options} />
           </Box>
         </Box>
       </CardContent>
