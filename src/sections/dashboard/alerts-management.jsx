@@ -28,7 +28,7 @@ export default function AlertsManagement({ title }) {
     datasets: [
       {
         data: [300, 50, 100],
-        backgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
+        backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', ],
         hoverBackgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
       },
     ],

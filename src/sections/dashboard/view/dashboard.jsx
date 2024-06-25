@@ -28,17 +28,18 @@ export default function Dashboard() {
               <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent sx={{ height: '100%' }}>
-                    <ActiveRate title="Active Rate" />
+                    <AlertsManagement title="Alerts Management" />
                   </CardContent>
                 </Card>
               </Grid>
               <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent sx={{ height: '100%' }}>
-                    <AlertsManagement title="Alerts Management" />
+                    <ActiveRate title="Active Rate" />
                   </CardContent>
                 </Card>
               </Grid>
+
             </Grid>
           </Grid>
         </CardContent>
