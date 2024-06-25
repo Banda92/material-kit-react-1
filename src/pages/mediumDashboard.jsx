@@ -8,7 +8,7 @@ export default function mediumDashboard() {
   return (
     <>
       <Helmet>
-        <title> mediumDashboard | Minimal UI </title>
+        <title> mediumDashboard | Mediums </title>
       </Helmet>
 
       <Dashboard />

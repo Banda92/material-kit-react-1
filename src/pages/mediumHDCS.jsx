@@ -8,7 +8,7 @@ export default function mediumHDCS() {
   return (
     <>
       <Helmet>
-        <title> mediumHDCS | Minimal UI </title>
+        <title> mediumHDCS | Mediums </title>
       </Helmet>
 
       <HDCS />
