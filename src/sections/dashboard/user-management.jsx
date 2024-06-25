@@ -53,7 +53,7 @@ export default function UserManagement({ title }) {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h5">{title}</Typography>
+        <Typography  variant="h5" >{title}</Typography>
         <Box sx={{ mt: 0, display: 'flex', justifyContent: 'center' }}>
           <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%', maxWidth: '600px' }}>
             <PolarArea data={data} />

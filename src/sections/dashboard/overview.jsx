@@ -48,34 +48,34 @@ export default function Overview({ title }) {
     <Card>
       <CardContent>
         <Typography variant="h5">{title}</Typography>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid container spacing={3} sx={{ mt: 0 }}>
           <Grid item xs={12} sm={4}>
-            <Card>
-              <CardContent>
+            <Card >
+              <CardContent align="center">
                 <Typography variant="h6">Total Devices</Typography>
-                <Typography variant="body2">100</Typography>
+                <Typography mt={1} variant="body2">100</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Card>
-              <CardContent>
+              <CardContent align="center">
                 <Typography variant="h6">Active Devices</Typography>
-                <Typography variant="body2">80</Typography>
+                <Typography mt={1} variant="body2">80</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Card>
-              <CardContent>
+              <CardContent align="center">
                 <Typography variant="h6">Inactive Devices</Typography>
-                <Typography variant="body2">20</Typography>
+                <Typography mt={1} variant="body2">20</Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
         <Box sx={{ mt: 0, display: 'flex', justifyContent: 'center' }}>
-          <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxHeight: '400px', width: '100%'}}>
+          <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxHeight: '300px', width: '100%'}}>
             <Line data={data} />
           </Box>
         </Box>
