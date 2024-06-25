@@ -11,7 +11,6 @@ import {
 
 import {
   Box,
-  Card,
   Typography,
   CardContent,
 } from '@mui/material';
@@ -36,16 +35,14 @@ export default function AlertsManagement({ title }) {
   };
 
   return (
-    <Card>
       <CardContent>
-        <Typography variant="h5" >{title}</Typography>
-        <Box sx={{ mt: 0, display: 'flex', justifyContent: 'center' }}>
-          <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%', maxWidth: '600px' }}>
+        <Typography variant="h5" align="center">{title}</Typography>
+        <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
+          <Box sx={{ width:'100%', maxWidth: '450px', maxHeight: '450px' }}>
             <Doughnut data={data} />
           </Box>
         </Box>
       </CardContent>
-    </Card>
   );
 }
 

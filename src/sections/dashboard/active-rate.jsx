@@ -33,7 +33,6 @@ export default function ActiveRate({ title }) {
   };
 
   return (
-    <Card>
       <CardContent>
         <Typography variant="h5" align="center">{title}</Typography>
         <Grid container spacing={3} sx={{ mt: 2 }}>
@@ -64,7 +63,6 @@ export default function ActiveRate({ title }) {
           ))}
         </Grid>
       </CardContent>
-    </Card>
   );
 }
 
