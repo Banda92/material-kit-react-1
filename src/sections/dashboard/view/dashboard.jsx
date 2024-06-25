@@ -24,7 +24,7 @@ export default function Dashboard() {
                 <Overview title="Overview" />
               </Grid>
             </Grid>
-            <Grid container spacing={3} sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3} sx={{height:'100%', flexGrow: 1}}>
               <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent sx={{ height: '100%' }}>
@@ -32,7 +32,7 @@ export default function Dashboard() {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', height: '100%', flexGrow: 1}}>
                 <Card sx={{ height: '100%' }}>
                   <CardContent sx={{ height: '100%' }}>
                     <ActiveRate title="Active Rate" />
