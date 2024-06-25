@@ -116,13 +116,13 @@ export default function ActiveRate({ title }) {
                 <CardContent sx={{whiteSpace:'nowrap'}}>
                   <Box display="flex" justifyContent="center" alignItems="center">
                     <Typography variant="h6">{device.type}</Typography>
-                    <Typography ml={1} variant="body2">{`(Total: ${device.total})`}</Typography>
+
                   </Box>
                   <Divider sx={{ my: 1 }} />
-                  <Typography variant="h6" align="center" sx={{ mt: 1 }}>Active Rate</Typography>
                   <Typography variant="h4" align="center" sx={{ color: getColor(parseFloat(calculateActiveRate(device.active, device.total))) }}>
                     {calculateActiveRate(device.active, device.total)}
                   </Typography>
+                  <Typography  variant="body2" align="center">{`(${device.active} / ${device.total})`}</Typography>
                 </CardContent>
               </Card>
             </Grid>

@@ -24,25 +24,25 @@ ChartJS.register(
 
 export default function AlertsManagement({ title }) {
   const data = {
-    labels: ['Critical', 'Warning', 'Information'],
+    labels: ['Information', 'Warning', 'Critical'],
     datasets: [
       {
-        data: [300, 50, 100],
-        backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', ],
-        hoverBackgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
+        data: [300, 100, 50],
+        backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384'],
+        hoverBackgroundColor: ['#36A2EB', '#FFCE56', '#FF6384'],
       },
     ],
   };
 
   return (
-      <CardContent>
-        <Typography variant="h5" align="center">{title}</Typography>
-        <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
-          <Box sx={{ width:'100%', maxWidth: '450px', maxHeight: '450px' }}>
-            <Doughnut data={data} />
-          </Box>
+    <CardContent>
+      <Typography variant="h5" align="center">{title}</Typography>
+      <Box mt={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
+        <Box sx={{ width: '100%', maxWidth: '450px', maxHeight: '450px' }}>
+          <Doughnut data={data} />
         </Box>
-      </CardContent>
+      </Box>
+    </CardContent>
   );
 }
 
