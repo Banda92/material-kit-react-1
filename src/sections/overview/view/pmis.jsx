@@ -34,7 +34,7 @@ export default function PMIS() {
 
   return (
     <Container maxWidth="xl" sx={{ height: `${innerHeight - 80 - 36 - innerHeight * 0.06}px` }}>
-      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column',  overflow:'auto'}}>
         <CardContent sx={{ flexGrow: 0 }}>
           <Typography variant="h4" sx={{ mb: 3 }}>
             MediumsPMIS
